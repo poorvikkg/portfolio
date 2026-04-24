@@ -254,11 +254,6 @@
             align-items: center;
         }
 
-        .contact-dropdown-wrap {
-            position: relative;
-            display: inline-block;
-        }
-
         .contact-dropdown {
             position: absolute;
             top: 100%;
@@ -272,7 +267,7 @@
             flex-direction: column;
             gap: 5px;
             min-width: 180px;
-            z-index: 100;
+            z-index: 1000; /* Higher z-index to stay above sections */
             opacity: 0;
             visibility: hidden;
             transform: translateY(10px);
@@ -280,14 +275,22 @@
             margin-top: 15px;
         }
 
-        /* Invisible bridge to fix hover gap issue */
+        /* Robust invisible bridge to fix hover gap issue */
         .contact-dropdown::before {
             content: '';
             position: absolute;
-            top: -15px;
-            left: 0;
-            width: 100%;
-            height: 15px;
+            top: -25px; /* Deep overlap with the trigger */
+            left: -20px;
+            right: -20px;
+            height: 40px; /* Covers the entire gap plus extra buffer */
+            background: transparent;
+            z-index: -1;
+        }
+
+        .contact-dropdown-wrap {
+            position: relative;
+            display: inline-block;
+            z-index: 1001; /* Ensure trigger and its children stay on top */
         }
 
         .contact-dropdown-wrap:hover .contact-dropdown {
