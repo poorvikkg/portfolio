@@ -977,20 +977,42 @@
         }
 
         @media (max-width: 992px) {
+            main {
+                margin-left: 0;
+            }
+            .sidebar {
+                display: none;
+            }
             #hero {
-                flex-direction: column;
+                flex-direction: column-reverse;
                 text-align: center;
                 justify-content: center;
-                gap: 50px;
+                gap: 40px;
+                margin-top: 50px;
+            }
+            .hero-image {
+                position: relative;
+                width: 100%;
+                height: auto;
+                transform: none;
+                justify-content: center;
+                align-items: center;
+                padding: 0;
+                margin: 0;
+            }
+            .hero-content {
+                margin: 0 auto;
+                text-align: center;
             }
             .hero-buttons {
                 justify-content: center;
+                flex-wrap: wrap;
             }
             .title {
                 justify-content: center;
             }
             .hero-desc {
-                margin: 0 auto 50px auto;
+                margin: 0 auto 40px auto;
             }
             .contact-content {
                 flex-direction: column;
@@ -1007,7 +1029,7 @@
                 left: 0;
                 right: 0;
                 width: 100%;
-                background: rgba(0, 0, 0, 0.9);
+                background: rgba(0, 0, 0, 0.95);
                 padding: 15px 20px;
                 overflow-x: auto;
                 white-space: nowrap;
@@ -1017,16 +1039,20 @@
                 backdrop-filter: blur(10px);
                 -webkit-overflow-scrolling: touch;
             }
+            nav a {
+                padding: 10px 15px;
+                margin-right: 5px;
+            }
             nav::-webkit-scrollbar {
                 display: none;
+            }
+            section {
+                padding: 100px 40px 60px 40px;
             }
         }
 
         @media (max-width: 768px) {
-            main {
-                margin-left: 0;
-            }
-            .sidebar, .scroll-indicator, .floating-tags {
+            .scroll-indicator, .floating-tags {
                 display: none;
             }
             section {
@@ -1034,14 +1060,40 @@
                 min-height: auto;
             }
             h1 {
-                font-size: 42px;
+                font-size: 40px;
                 line-height: 1.1;
+                margin-top: 10px;
+            }
+            .section-title {
+                font-size: 30px;
             }
             .title {
                 font-size: 18px;
             }
             .hero-desc {
                 font-size: 15px;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+                gap: 15px;
+            }
+            .hero-buttons .btn-outline, .contact-dropdown-wrap {
+                width: 100%;
+                justify-content: center;
+                text-align: center;
+            }
+            .contact-dropdown-wrap .btn-link {
+                width: 100%;
+                display: block;
+                padding: 15px;
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                border-radius: 6px;
+            }
+            .contact-dropdown {
+                width: 100%;
+                min-width: 100%;
             }
             .projects-grid {
                 grid-template-columns: 1fr;
@@ -1055,6 +1107,8 @@
                 width: 100%;
                 border: 1px solid var(--border-color);
                 border-radius: 6px;
+                margin: 0;
+                padding: 12px;
             }
             .tab-btn.active::after {
                 display: none;
@@ -1072,20 +1126,17 @@
                 text-align: center;
             }
             .hero-image .profile-img {
-                width: 250px;
-                height: 250px;
+                width: 220px;
+                height: 220px;
             }
             .hero-image .glow-ring {
-                width: 260px;
-                height: 260px;
-            }
-            .hero-content {
-                text-align: center;
-                margin-top: 20px;
+                width: 230px;
+                height: 230px;
             }
             .stat-card {
                 width: 100%;
                 text-align: center;
+                justify-content: center;
             }
         }
     </style>
