@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,23 +8,26 @@
     <link rel="preload" as="image" href="poorvik_compressed.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </noscript>
     <style>
         :root {
-            --bg-color: #000000;
-            --text-color: #ffffff;
-            --text-gray: #a0a0a0;
-            --border-color: #333333;
-            --accent-glow: rgba(255, 255, 255, 0.15);
+            --bg-color: #181818;
+            --text-color: #f0f0f0;
+            --text-gray: #999999;
+            --border-color: #3a3a3a;
+            --accent-glow: rgba(255, 255, 255, 0.12);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Space Mono', monospace;
         }
 
         body {
@@ -31,6 +35,28 @@
             color: var(--text-color);
             overflow-x: hidden;
             scroll-behavior: smooth;
+            text-shadow: 0 0 2px rgba(255, 255, 255, 0.4);
+        }
+
+        /* CRT Scanline Overlay */
+        body::after {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 9999;
+            background-size: 100% 3px, 3px 100%;
+            pointer-events: none;
+        }
+
+        /* Sharp Retro Elements */
+        .btn-outline, .skill-pill, .stat-card, .contact-dropdown, .project-card, .tab-btn {
+            border-radius: 0 !important;
+            text-transform: uppercase;
         }
 
         /* Top Navigation */
@@ -51,7 +77,8 @@
             gap: 25px;
         }
 
-        .header-socials a, .header-socials .copy-link {
+        .header-socials a,
+        .header-socials .copy-link {
             color: var(--text-color);
             font-size: 20px;
             text-decoration: none;
@@ -63,7 +90,8 @@
             justify-content: center;
         }
 
-        .header-socials a:hover, .header-socials .copy-link:hover {
+        .header-socials a:hover,
+        .header-socials .copy-link:hover {
             color: var(--text-gray);
         }
 
@@ -252,9 +280,27 @@
         }
 
         @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
         }
+
+        /* Professional Title Effect */
+        .professional-title {
+            background: linear-gradient(to right, #ffffff, #888888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+            letter-spacing: -1px;
+        }
+
+
 
         .hero-desc {
             color: var(--text-gray);
@@ -321,7 +367,8 @@
             position: absolute;
             top: 100%;
             left: 0;
-            background: #050505; /* Solid background to prevent overlap transparency */
+            background: #050505;
+            /* Solid background to prevent overlap transparency */
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.15);
@@ -331,7 +378,8 @@
             flex-direction: column;
             gap: 5px;
             min-width: 180px;
-            z-index: 1000; /* Higher z-index to stay above sections */
+            z-index: 1000;
+            /* Higher z-index to stay above sections */
             opacity: 0;
             visibility: hidden;
             transform: translateY(10px);
@@ -343,10 +391,12 @@
         .contact-dropdown::before {
             content: '';
             position: absolute;
-            top: -25px; /* Deep overlap with the trigger */
+            top: -25px;
+            /* Deep overlap with the trigger */
             left: -20px;
             right: -20px;
-            height: 40px; /* Covers the entire gap plus extra buffer */
+            height: 40px;
+            /* Covers the entire gap plus extra buffer */
             background: transparent;
             z-index: -1;
         }
@@ -354,7 +404,8 @@
         .contact-dropdown-wrap {
             position: relative;
             display: inline-block;
-            z-index: 1001; /* Ensure trigger and its children stay on top */
+            z-index: 1001;
+            /* Ensure trigger and its children stay on top */
         }
 
         .contact-dropdown-wrap.active .contact-dropdown {
@@ -403,7 +454,8 @@
         }
 
         .glow-ring {
-            display: none; /* Hide since the user's photo already has one */
+            display: none;
+            /* Hide since the user's photo already has one */
         }
 
         .profile-img {
@@ -509,13 +561,11 @@
             transform: translateY(-50%);
             width: 60%;
             height: 80%;
-            background-image: repeating-radial-gradient(
-                circle at 100% 50%,
-                transparent 0,
-                transparent 10px,
-                rgba(255, 255, 255, 0.03) 10px,
-                rgba(255, 255, 255, 0.03) 11px
-            );
+            background-image: repeating-radial-gradient(circle at 100% 50%,
+                    transparent 0,
+                    transparent 10px,
+                    rgba(255, 255, 255, 0.03) 10px,
+                    rgba(255, 255, 255, 0.03) 11px);
             z-index: 1;
             mask-image: linear-gradient(to left, black, transparent);
             -webkit-mask-image: linear-gradient(to left, black, transparent);
@@ -549,15 +599,46 @@
             white-space: nowrap;
         }
 
-        .float-tag:nth-child(1) { animation-delay: 0s; right: 20px; position: relative; }
-        .float-tag:nth-child(2) { animation-delay: -2s; right: 80px; position: relative; }
-        .float-tag:nth-child(3) { animation-delay: -4s; right: 0px; position: relative; }
-        .float-tag:nth-child(4) { animation-delay: -1s; right: 60px; position: relative; }
-        .float-tag:nth-child(5) { animation-delay: -3s; right: 30px; position: relative; }
+        .float-tag:nth-child(1) {
+            animation-delay: 0s;
+            right: 20px;
+            position: relative;
+        }
+
+        .float-tag:nth-child(2) {
+            animation-delay: -2s;
+            right: 80px;
+            position: relative;
+        }
+
+        .float-tag:nth-child(3) {
+            animation-delay: -4s;
+            right: 0px;
+            position: relative;
+        }
+
+        .float-tag:nth-child(4) {
+            animation-delay: -1s;
+            right: 60px;
+            position: relative;
+        }
+
+        .float-tag:nth-child(5) {
+            animation-delay: -3s;
+            right: 30px;
+            position: relative;
+        }
 
         @keyframes floatAnim {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
         }
 
         /* Projects Section */
@@ -609,8 +690,15 @@
         }
 
         @keyframes fadeInTab {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .projects-grid {
@@ -733,7 +821,7 @@
             flex: 1;
             min-width: 150px;
             text-align: center;
-            background: rgba(255,255,255,0.02);
+            background: rgba(255, 255, 255, 0.02);
             transition: all 0.3s ease;
         }
 
@@ -814,7 +902,7 @@
         .skills-category-title {
             font-size: 11px;
             letter-spacing: 3px;
-            color: rgba(255,255,255,0.4);
+            color: rgba(255, 255, 255, 0.4);
             text-transform: uppercase;
         }
 
@@ -828,32 +916,32 @@
             display: inline-flex;
             align-items: center;
             padding: 10px 20px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 40px;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255, 255, 255, 0.7);
             font-size: 14px;
             font-weight: 500;
             transition: all 0.3s ease;
         }
 
         .skill-pill:hover {
-            background: rgba(255,255,255,0.08);
-            border-color: rgba(255,255,255,0.3);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.3);
             color: #fff;
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(255,255,255,0.05);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
         }
 
         .skill-pill.highlight {
-            border-color: rgba(255,255,255,0.4);
+            border-color: rgba(255, 255, 255, 0.4);
             color: #fff;
-            box-shadow: 0 0 15px rgba(255,255,255,0.1);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
         }
 
         .skill-pill.highlight:hover {
-            box-shadow: 0 0 25px rgba(255,255,255,0.2);
-            background: rgba(255,255,255,0.1);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
         }
 
         /* ── Premium Contact / CTA Section ────────────────────────── */
@@ -871,9 +959,11 @@
         #contact::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0;
+            top: 0;
+            left: 0;
+            right: 0;
             height: 1px;
-            background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.15), transparent);
         }
 
         .cta-glow {
@@ -881,7 +971,7 @@
             width: 500px;
             height: 500px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.04) 0%, transparent 70%);
             top: 50%;
             left: 50%;
             transform: translate(-50%, -60%);
@@ -890,14 +980,23 @@
         }
 
         @keyframes ctaPulse {
-            0%, 100% { opacity: 0.6; transform: translate(-50%, -60%) scale(1); }
-            50% { opacity: 1; transform: translate(-50%, -60%) scale(1.08); }
+
+            0%,
+            100% {
+                opacity: 0.6;
+                transform: translate(-50%, -60%) scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -60%) scale(1.08);
+            }
         }
 
         .cta-label {
             font-size: 11px;
             letter-spacing: 4px;
-            color: rgba(255,255,255,0.4);
+            color: rgba(255, 255, 255, 0.4);
             text-transform: uppercase;
             margin-bottom: 28px;
             z-index: 2;
@@ -911,12 +1010,12 @@
             color: #fff;
             margin-bottom: 24px;
             z-index: 2;
-            text-shadow: 0 0 60px rgba(255,255,255,0.12);
+            text-shadow: 0 0 60px rgba(255, 255, 255, 0.12);
         }
 
         .cta-subtext {
             font-size: 15px;
-            color: rgba(255,255,255,0.45);
+            color: rgba(255, 255, 255, 0.45);
             max-width: 460px;
             line-height: 1.8;
             margin-bottom: 48px;
@@ -951,7 +1050,7 @@
         .cta-btn-primary:hover {
             background: transparent;
             color: #fff;
-            box-shadow: 0 0 30px rgba(255,255,255,0.2);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
             transform: translateY(-3px);
         }
 
@@ -960,21 +1059,21 @@
             align-items: center;
             gap: 10px;
             background: transparent;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             font-size: 14px;
             font-weight: 500;
             padding: 14px 32px;
             border-radius: 6px;
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             transition: all 0.3s ease;
         }
 
         .cta-btn-secondary:hover {
-            border-color: rgba(255,255,255,0.6);
+            border-color: rgba(255, 255, 255, 0.6);
             color: #fff;
             transform: translateY(-3px);
-            box-shadow: 0 0 20px rgba(255,255,255,0.08);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.08);
         }
 
         .cta-links {
@@ -991,16 +1090,18 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            color: rgba(255,255,255,0.35);
+            color: rgba(255, 255, 255, 0.35);
             text-decoration: none;
             font-size: 13px;
             transition: color 0.3s ease;
         }
 
-        .cta-link:hover { color: rgba(255,255,255,0.9); }
+        .cta-link:hover {
+            color: rgba(255, 255, 255, 0.9);
+        }
 
         .cta-divider {
-            color: rgba(255,255,255,0.15);
+            color: rgba(255, 255, 255, 0.15);
             font-size: 13px;
         }
 
@@ -1054,6 +1155,7 @@
             .projects-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
             .skills-grid {
                 flex-wrap: wrap;
                 justify-content: center;
@@ -1065,15 +1167,18 @@
             main {
                 margin-left: 0;
             }
+
             .sidebar {
                 display: none;
             }
+
             #hero {
                 flex-direction: column-reverse;
                 text-align: center;
                 justify-content: center;
                 gap: 30px;
             }
+
             .hero-image {
                 position: relative;
                 width: 100%;
@@ -1084,28 +1189,35 @@
                 padding: 0;
                 margin: 0;
             }
+
             .hero-content {
                 margin: 0 auto;
                 text-align: center;
             }
+
             .hero-buttons {
                 justify-content: center;
                 flex-wrap: wrap;
             }
+
             .title {
                 justify-content: center;
             }
+
             .hero-desc {
                 margin: 0 auto 40px auto;
             }
+
             .contact-content {
                 flex-direction: column;
                 gap: 50px;
                 text-align: center;
             }
+
             .contact-middle {
                 align-items: center;
             }
+
             nav {
                 display: flex;
                 position: fixed;
@@ -1122,13 +1234,16 @@
                 backdrop-filter: blur(10px);
                 -webkit-backdrop-filter: blur(10px);
             }
+
             .header-socials {
                 display: flex;
                 gap: 25px;
             }
+
             .mobile-menu-btn {
                 display: block;
             }
+
             .nav-links {
                 position: fixed;
                 top: 0;
@@ -1143,17 +1258,20 @@
                 transition: right 0.4s ease;
                 border-left: 1px solid rgba(255, 255, 255, 0.1);
                 z-index: 999;
-                box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
             }
+
             .nav-links.active {
                 right: 0;
             }
+
             .nav-links a {
                 padding: 10px 20px;
                 margin: 0;
                 font-size: 18px;
                 font-weight: 600;
             }
+
             section {
                 padding: 80px 30px 40px 30px;
                 min-height: auto;
@@ -1161,44 +1279,56 @@
         }
 
         @media (max-width: 768px) {
-            .scroll-indicator, .floating-tags {
+
+            .scroll-indicator,
+            .floating-tags {
                 display: none;
             }
+
             section {
                 padding: 70px 20px 30px 20px;
                 min-height: auto;
             }
+
             h1 {
                 font-size: 48px;
                 line-height: 1.1;
                 margin-top: 10px;
             }
+
             .section-title {
                 font-size: 36px;
             }
+
             .title {
                 font-size: 22px;
             }
+
             .hero-desc {
                 font-size: 18px;
                 line-height: 1.6;
             }
+
             .about-text {
                 font-size: 18px;
                 line-height: 1.7;
             }
+
             .hero-buttons {
                 flex-direction: column;
                 width: 100%;
                 gap: 15px;
             }
-            .hero-buttons .btn-outline, .contact-dropdown-wrap {
+
+            .hero-buttons .btn-outline,
+            .contact-dropdown-wrap {
                 width: 100%;
                 justify-content: center;
                 text-align: center;
                 font-size: 16px;
                 padding: 16px 20px;
             }
+
             .contact-dropdown-wrap .btn-link {
                 width: 100%;
                 display: block;
@@ -1209,27 +1339,33 @@
                 font-size: 16px;
                 font-weight: 600;
             }
+
             .contact-dropdown {
                 width: 100%;
                 min-width: 100%;
             }
+
             .contact-dropdown a {
                 font-size: 16px;
                 padding: 15px 20px;
             }
+
             .projects-header {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 20px;
             }
+
             .projects-grid {
                 grid-template-columns: 1fr;
             }
+
             .project-tabs {
                 flex-direction: column;
                 gap: 10px;
                 border-bottom: none;
             }
+
             .tab-btn {
                 width: 100%;
                 border: 1px solid var(--border-color);
@@ -1238,32 +1374,40 @@
                 padding: 16px;
                 font-size: 16px;
             }
+
             .tab-btn.active::after {
                 display: none;
             }
+
             .project-title {
                 font-size: 24px;
             }
+
             .project-desc {
                 font-size: 16px;
                 line-height: 1.6;
             }
+
             .project-features li {
                 font-size: 15px;
                 margin-bottom: 5px;
             }
+
             .project-link {
                 font-size: 16px;
                 padding: 10px 0;
             }
+
             .skills-container {
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
+
             .skill-pill {
                 font-size: 16px;
                 padding: 12px 24px;
             }
+
             footer {
                 position: relative;
                 bottom: 0;
@@ -1273,32 +1417,40 @@
                 text-align: center;
                 font-size: 14px;
             }
+
             .hero-image .profile-img {
                 width: 220px;
                 height: 220px;
             }
+
             .hero-image .glow-ring {
                 width: 230px;
                 height: 230px;
             }
+
             .stat-card {
                 width: 100%;
                 text-align: center;
                 justify-content: center;
             }
+
             .stat-label {
                 font-size: 14px;
             }
+
             .cta-link {
                 font-size: 16px;
                 padding: 10px 15px;
             }
-            .cta-btn-primary, .cta-btn-secondary {
+
+            .cta-btn-primary,
+            .cta-btn-secondary {
                 font-size: 16px;
                 padding: 18px 30px;
                 width: 100%;
                 justify-content: center;
             }
+
             .cta-buttons {
                 flex-direction: column;
                 width: 100%;
@@ -1306,6 +1458,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <!-- Particles Background -->
@@ -1314,10 +1467,13 @@
     <!-- Top Navigation -->
     <nav>
         <div class="header-socials">
-            <a href="https://www.linkedin.com/in/poorvik-kuthyala/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.linkedin.com/in/poorvik-kuthyala/" target="_blank" title="LinkedIn"><i
+                    class="fab fa-linkedin-in"></i></a>
             <a href="https://github.com/poorvikkg" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-            <span class="copy-link" onclick="copyToClipboard('poorvik935@gmail.com', this)" title="Copy Email"><i class="far fa-envelope"></i></span>
-            <span class="copy-link" onclick="copyToClipboard('+918867070511', this)" title="Copy Phone"><i class="fas fa-phone-alt"></i></span>
+            <span class="copy-link" onclick="copyToClipboard('poorvik935@gmail.com', this)" title="Copy Email"><i
+                    class="far fa-envelope"></i></span>
+            <span class="copy-link" onclick="copyToClipboard('+918867070511', this)" title="Copy Phone"><i
+                    class="fas fa-phone-alt"></i></span>
         </div>
         <div class="mobile-menu-btn" onclick="toggleMenu()">
             <i class="fas fa-bars"></i>
@@ -1338,10 +1494,13 @@
 
         <div class="social-icons">
             <a href="https://github.com/poorvikkg" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/poorvik-kuthyala/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.linkedin.com/in/poorvik-kuthyala/" target="_blank" title="LinkedIn"><i
+                    class="fab fa-linkedin-in"></i></a>
             <a href="https://leetcode.com/u/Poorvikkg/" target="_blank" title="LeetCode"><i class="fas fa-code"></i></a>
-            <a href="https://www.geeksforgeeks.org/profile/poorvikkg?tab=overview" target="_blank" title="GeeksforGeeks"><i class="fas fa-laptop-code"></i></a>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=poorvik935@gmail.com" target="_blank" title="Email"><i class="far fa-envelope"></i></a>
+            <a href="https://www.geeksforgeeks.org/profile/poorvikkg?tab=overview" target="_blank"
+                title="GeeksforGeeks"><i class="fas fa-laptop-code"></i></a>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=poorvik935@gmail.com" target="_blank"
+                title="Email"><i class="far fa-envelope"></i></a>
         </div>
         <div class="section-number" id="current-section-num">O(1)</div>
     </aside>
@@ -1359,20 +1518,28 @@
         <section id="hero" data-num="O(1)">
             <div class="hero-content">
                 <p class="greeting">Hello, I'm</p>
-                <h1>POORVIK</h1>
+                <h1 class="professional-title">Poorvik</h1>
                 <h2 class="title">Full Stack Developer</h2>
                 <p class="hero-desc">
                     I build scalable web applications and solve complex problems using DSA.
                 </p>
                 <div class="hero-buttons">
-                    <a href="poorvikmain.pdf" download class="btn-outline" style="background: var(--text-color); color: var(--bg-color); border-color: var(--text-color);">Download Resume <i class="fas fa-download"></i></a>
+                    <a href="poorvikmain.pdf" download class="btn-outline"
+                        style="background: var(--text-color); color: var(--bg-color); border-color: var(--text-color);">Download
+                        Resume <i class="fas fa-download"></i></a>
                     <div class="contact-dropdown-wrap">
-                        <span style="cursor: pointer;" class="btn-link">Contact Me <i class="fas fa-chevron-down" style="font-size: 12px; margin-left: 5px;"></i></span>
+                        <span style="cursor: pointer;" class="btn-link">Contact Me <i class="fas fa-chevron-down"
+                                style="font-size: 12px; margin-left: 5px;"></i></span>
                         <div class="contact-dropdown">
-                            <a href="tel:+918867070511"><i class="fas fa-phone-alt" style="color: #0078FF; font-size: 18px;"></i> Call</a>
-                            <a href="https://wa.me/918867070511" target="_blank"><i class="fab fa-whatsapp" style="color: #25D366; font-size: 18px;"></i> WhatsApp</a>
-                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=poorvik935@gmail.com" target="_blank"><i class="far fa-envelope" style="color: #EA4335; font-size: 18px;"></i> Email</a>
-                            <a href="https://www.linkedin.com/in/poorvik-kuthyala/" target="_blank"><i class="fab fa-linkedin" style="color: #0077B5; font-size: 18px;"></i> LinkedIn</a>
+                            <a href="tel:+918867070511"><i class="fas fa-phone-alt"
+                                    style="color: #0078FF; font-size: 18px;"></i> Call</a>
+                            <a href="https://wa.me/918867070511" target="_blank"><i class="fab fa-whatsapp"
+                                    style="color: #25D366; font-size: 18px;"></i> WhatsApp</a>
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=poorvik935@gmail.com"
+                                target="_blank"><i class="far fa-envelope" style="color: #EA4335; font-size: 18px;"></i>
+                                Email</a>
+                            <a href="https://www.linkedin.com/in/poorvik-kuthyala/" target="_blank"><i
+                                    class="fab fa-linkedin" style="color: #0077B5; font-size: 18px;"></i> LinkedIn</a>
                         </div>
                     </div>
                 </div>
@@ -1380,14 +1547,16 @@
             <div class="hero-image">
                 <div class="glow-ring"></div>
                 <!-- Make sure to have a poorvik.png or use the generated image -->
-                <img src="poorvik_compressed.png" alt="Poorvik" class="profile-img" fetchpriority="high" decoding="async" onerror="this.src='https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1000&auto=format&fit=crop&grayscale=true'">
+                <img src="poorvik_compressed.png" alt="Poorvik" class="profile-img" fetchpriority="high"
+                    decoding="async"
+                    onerror="this.src='https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1000&auto=format&fit=crop&grayscale=true'">
             </div>
         </section>
 
         <!-- Section 02: About -->
         <section id="about" data-num="O(log n)">
             <div class="wave-bg"></div>
-            
+
             <div class="floating-tags">
                 <span class="float-tag">Machine Learning</span>
                 <span class="float-tag">Backend</span>
@@ -1403,10 +1572,13 @@
                     I'm an AIML student who believes in building things that actually matter.
                 </p>
                 <p class="about-text" style="margin-top: 20px;">
-                    I enjoy working on ideas from scratch, taking responsibility, and seeing them through to completion. For me, the process matters just as much as the result — understanding problems, thinking through solutions, and improving with every step.
+                    I enjoy working on ideas from scratch, taking responsibility, and seeing them through to completion.
+                    For me, the process matters just as much as the result — understanding problems, thinking through
+                    solutions, and improving with every step.
                 </p>
                 <p class="about-text" style="margin-top: 20px;">
-                    I value discipline, consistency, and clarity in the way I work. I'm always trying to grow — not just in technical skills, but in how I think, collaborate, and handle challenges.
+                    I value discipline, consistency, and clarity in the way I work. I'm always trying to grow — not just
+                    in technical skills, but in how I think, collaborate, and handle challenges.
                 </p>
                 <a href="#contact" class="btn-outline">More About Me <i class="fas fa-arrow-right"></i></a>
             </div>
@@ -1425,11 +1597,13 @@
                     <div class="stat-num">900+</div>
                     <div class="stat-label">LeetCode Solved</div>
                 </a>
-                <a href="https://www.geeksforgeeks.org/profile/poorvikkg?tab=overview" target="_blank" class="stat-card">
+                <a href="https://www.geeksforgeeks.org/profile/poorvikkg?tab=overview" target="_blank"
+                    class="stat-card">
                     <div class="stat-num">350+</div>
                     <div class="stat-label">GFG Solved</div>
                 </a>
-                <a href="https://www.geeksforgeeks.org/profile/poorvikkg?tab=overview" target="_blank" class="stat-card">
+                <a href="https://www.geeksforgeeks.org/profile/poorvikkg?tab=overview" target="_blank"
+                    class="stat-card">
                     <div class="stat-num">#1</div>
                     <div class="stat-label">GFG Institute Rank</div>
                 </a>
@@ -1439,10 +1613,12 @@
                 </a>
             </div>
             <div style="display: flex; gap: 20px; justify-content: center; margin-top: 50px; max-width: 900px;">
-                <a href="https://leetcode.com/u/Poorvikkg/" target="_blank" class="btn-outline" style="display: flex; align-items: center; gap: 10px;">
+                <a href="https://leetcode.com/u/Poorvikkg/" target="_blank" class="btn-outline"
+                    style="display: flex; align-items: center; gap: 10px;">
                     <i class="fas fa-code"></i> LeetCode Profile
                 </a>
-                <a href="https://www.geeksforgeeks.org/profile/poorvikkg?tab=overview" target="_blank" class="btn-outline" style="display: flex; align-items: center; gap: 10px;">
+                <a href="https://www.geeksforgeeks.org/profile/poorvikkg?tab=overview" target="_blank"
+                    class="btn-outline" style="display: flex; align-items: center; gap: 10px;">
                     <i class="fas fa-laptop-code"></i> GeeksforGeeks Profile
                 </a>
             </div>
@@ -1452,7 +1628,7 @@
         <section id="dev" data-num="O(n log n)">
             <div class="section-label">SOFTWARE ENGINEERING</div>
             <h2 class="section-title">Development Stack</h2>
-            
+
             <div class="skills-container">
                 <div class="skills-category">
                     <div class="skills-category-title">Frontend</div>
@@ -1522,36 +1698,49 @@
         <section id="leadership" data-num="O(n²)">
             <div class="section-label">ACHIEVEMENTS</div>
             <h2 class="section-title">Leadership & Awards</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 900px;">
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 900px;">
                 <div class="stat-card" style="display: flex; flex-direction: column; justify-content: center;">
                     <div class="stat-num" style="font-size: 22px;">Founder & President</div>
-                    <div class="stat-label" style="font-weight: 600; margin-bottom: 15px; color: var(--text-color);">College Technical Club</div>
-                    <div class="stat-label" style="line-height: 1.5; font-size: 13px;">Organized coding events to foster a strong developer community on campus.</div>
+                    <div class="stat-label" style="font-weight: 600; margin-bottom: 15px; color: var(--text-color);">
+                        College Technical Club</div>
+                    <div class="stat-label" style="line-height: 1.5; font-size: 13px;">Organized coding events to foster
+                        a strong developer community on campus.</div>
                 </div>
                 <div class="stat-card" style="display: flex; flex-direction: column; justify-content: center;">
                     <div class="stat-num" style="font-size: 22px;">Campus Representative</div>
-                    <div class="stat-label" style="font-weight: 600; margin-bottom: 15px; color: var(--text-color);">GeeksforGeeks</div>
-                    <div class="stat-label" style="line-height: 1.5; font-size: 13px;">Conducted technical seminars and actively promoted DSA resources to the student body.</div>
+                    <div class="stat-label" style="font-weight: 600; margin-bottom: 15px; color: var(--text-color);">
+                        GeeksforGeeks</div>
+                    <div class="stat-label" style="line-height: 1.5; font-size: 13px;">Conducted technical seminars and
+                        actively promoted DSA resources to the student body.</div>
                 </div>
                 <div class="stat-card" style="display: flex; flex-direction: column; justify-content: center;">
                     <div class="stat-num" style="font-size: 22px;">Rank #1</div>
-                    <div class="stat-label" style="font-weight: 600; margin-bottom: 15px; color: var(--text-color);">Campus DSA</div>
-                    <div class="stat-label" style="line-height: 1.5; font-size: 13px;">Secured the top position across the entire campus in Data Structures & Algorithms.</div>
+                    <div class="stat-label" style="font-weight: 600; margin-bottom: 15px; color: var(--text-color);">
+                        Campus DSA</div>
+                    <div class="stat-label" style="line-height: 1.5; font-size: 13px;">Secured the top position across
+                        the entire campus in Data Structures & Algorithms.</div>
                 </div>
                 <div class="stat-card" style="display: flex; flex-direction: column; justify-content: center;">
                     <div class="stat-num" style="font-size: 22px;">Award Winner</div>
-                    <div class="stat-label" style="font-weight: 600; margin-bottom: 15px; color: var(--text-color);">Project-Based Learning</div>
-                    <div class="stat-label" style="line-height: 1.5; font-size: 13px;">Recognized and awarded by the college for exceptional performance in project-based learning.</div>
+                    <div class="stat-label" style="font-weight: 600; margin-bottom: 15px; color: var(--text-color);">
+                        Project-Based Learning</div>
+                    <div class="stat-label" style="line-height: 1.5; font-size: 13px;">Recognized and awarded by the
+                        college for exceptional performance in project-based learning.</div>
                 </div>
                 <div class="stat-card" style="display: flex; flex-direction: column; justify-content: center;">
                     <div class="stat-num" style="font-size: 22px;">Top 20</div>
-                    <div class="stat-label" style="font-weight: 600; margin-bottom: 15px; color: var(--text-color);">Hackathon</div>
-                    <div class="stat-label" style="line-height: 1.5; font-size: 13px;">Secured a Top 20 finish out of 700+ competing teams by building an innovative solution.</div>
+                    <div class="stat-label" style="font-weight: 600; margin-bottom: 15px; color: var(--text-color);">
+                        Hackathon</div>
+                    <div class="stat-label" style="line-height: 1.5; font-size: 13px;">Secured a Top 20 finish out of
+                        700+ competing teams by building an innovative solution.</div>
                 </div>
                 <div class="stat-card" style="display: flex; flex-direction: column; justify-content: center;">
                     <div class="stat-num" style="font-size: 22px;">Freelance Lead</div>
-                    <div class="stat-label" style="font-weight: 600; margin-bottom: 15px; color: var(--text-color);">Full-Stack Project</div>
-                    <div class="stat-label" style="line-height: 1.5; font-size: 13px;">Led a 14-member team to build a hostel laundry management system, generating ₹40k+ in revenue.</div>
+                    <div class="stat-label" style="font-weight: 600; margin-bottom: 15px; color: var(--text-color);">
+                        Full-Stack Project</div>
+                    <div class="stat-label" style="line-height: 1.5; font-size: 13px;">Led a 14-member team to build a
+                        hostel laundry management system, generating ₹40k+ in revenue.</div>
                 </div>
             </div>
         </section>
@@ -1563,9 +1752,10 @@
                     <div class="section-label">PROJECTS</div>
                     <h2 class="section-title" style="margin-bottom: 0;">Things I've Built</h2>
                 </div>
-                <a href="https://github.com/poorvikkg" target="_blank" class="btn-outline">View All Projects <i class="fas fa-arrow-right"></i></a>
+                <a href="https://github.com/poorvikkg" target="_blank" class="btn-outline">View All Projects <i
+                        class="fas fa-arrow-right"></i></a>
             </div>
-            
+
             <div class="project-tabs">
                 <button class="tab-btn active" onclick="switchProjectTab('web')">Web Development</button>
                 <button class="tab-btn" onclick="switchProjectTab('aiml')">AI / Machine Learning</button>
@@ -1579,7 +1769,8 @@
                         <div class="project-number">01</div>
                         <div class="project-icon"><i class="fas fa-tshirt"></i></div>
                         <h3 class="project-title">Hostel Laundry Management</h3>
-                        <p class="project-desc" style="margin-bottom: 20px; flex-grow: 0;">A full-stack application to manage hostel laundry operations, including booking, tracking, and administration.</p>
+                        <p class="project-desc" style="margin-bottom: 20px; flex-grow: 0;">A full-stack application to
+                            manage hostel laundry operations, including booking, tracking, and administration.</p>
                         <ul class="project-features">
                             <li>Laundry booking and scheduling system</li>
                             <li>Order tracking with status updates</li>
@@ -1592,7 +1783,8 @@
                             <span class="tech-tag">React</span>
                             <span class="tech-tag">MySQL</span>
                         </div>
-                        <a href="https://github.com/poorvikkg/PBLFINAL" target="_blank" class="project-link">View on GitHub <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://github.com/poorvikkg/PBLFINAL" target="_blank" class="project-link">View on
+                            GitHub <i class="fas fa-arrow-right"></i></a>
                     </div>
 
                     <!-- Project 2 -->
@@ -1600,7 +1792,8 @@
                         <div class="project-number">02</div>
                         <div class="project-icon"><i class="fas fa-university"></i></div>
                         <h3 class="project-title">Banking Backend System</h3>
-                        <p class="project-desc" style="margin-bottom: 20px; flex-grow: 0;">A backend-focused system simulating core banking operations with secure transaction handling.</p>
+                        <p class="project-desc" style="margin-bottom: 20px; flex-grow: 0;">A backend-focused system
+                            simulating core banking operations with secure transaction handling.</p>
                         <ul class="project-features">
                             <li>Account creation and management</li>
                             <li>Deposit, withdrawal, and transaction processing</li>
@@ -1614,7 +1807,8 @@
                             <span class="tech-tag">PostgreSQL</span>
                             <span class="tech-tag">Docker</span>
                         </div>
-                        <a href="https://github.com/poorvikkg/wallet-backend" target="_blank" class="project-link">View on GitHub <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://github.com/poorvikkg/wallet-backend" target="_blank" class="project-link">View
+                            on GitHub <i class="fas fa-arrow-right"></i></a>
                     </div>
 
                     <!-- Project 3 -->
@@ -1622,7 +1816,8 @@
                         <div class="project-number">03</div>
                         <div class="project-icon"><i class="fas fa-comments"></i></div>
                         <h3 class="project-title">College Communication System</h3>
-                        <p class="project-desc" style="margin-bottom: 20px; flex-grow: 0;">A scalable platform for managing and broadcasting messages within a college environment.</p>
+                        <p class="project-desc" style="margin-bottom: 20px; flex-grow: 0;">A scalable platform for
+                            managing and broadcasting messages within a college environment.</p>
                         <ul class="project-features">
                             <li>Role-based communication (admin/students)</li>
                             <li>Announcement and notification system</li>
@@ -1635,7 +1830,8 @@
                             <span class="tech-tag">PostgreSQL</span>
                             <span class="tech-tag">Docker</span>
                         </div>
-                        <a href="https://github.com/poorvikkg/sagaJava" target="_blank" class="project-link">View on GitHub <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://github.com/poorvikkg/sagaJava" target="_blank" class="project-link">View on
+                            GitHub <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -1648,7 +1844,9 @@
                         <div class="project-number">01</div>
                         <div class="project-icon"><i class="fas fa-eye"></i></div>
                         <h3 class="project-title">Missing Person Detection System</h3>
-                        <p class="project-desc" style="margin-bottom: 20px; flex-grow: 0;">A real-time AI system that detects and identifies missing individuals using CCTV video feeds and deep learning-based facial recognition.</p>
+                        <p class="project-desc" style="margin-bottom: 20px; flex-grow: 0;">A real-time AI system that
+                            detects and identifies missing individuals using CCTV video feeds and deep learning-based
+                            facial recognition.</p>
                         <ul class="project-features">
                             <li>Face detection from CCTV streams using RetinaFace</li>
                             <li>Feature extraction using ArcFace for high-accuracy recognition</li>
@@ -1662,7 +1860,8 @@
                             <span class="tech-tag">ArcFace</span>
                             <span class="tech-tag">FAISS</span>
                         </div>
-                        <a href="https://github.com/poorvikkg/Major-project" target="_blank" class="project-link">View on GitHub <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://github.com/poorvikkg/Major-project" target="_blank" class="project-link">View
+                            on GitHub <i class="fas fa-arrow-right"></i></a>
                     </div>
 
                     <!-- AI Project 2 -->
@@ -1670,7 +1869,8 @@
                         <div class="project-number">02</div>
                         <div class="project-icon"><i class="fas fa-truck"></i></div>
                         <h3 class="project-title">Blind Spot Detection System</h3>
-                        <p class="project-desc" style="margin-bottom: 20px; flex-grow: 0;">A real-time computer vision system that detects vehicles and objects in blind spots to improve driving safety.</p>
+                        <p class="project-desc" style="margin-bottom: 20px; flex-grow: 0;">A real-time computer vision
+                            system that detects vehicles and objects in blind spots to improve driving safety.</p>
                         <ul class="project-features">
                             <li>Real-time object detection from video/CCTV feed</li>
                             <li>Detection of vehicles in blind spot regions</li>
@@ -1683,7 +1883,8 @@
                             <span class="tech-tag">YOLO</span>
                             <span class="tech-tag">Computer Vision</span>
                         </div>
-                        <a href="https://github.com/poorvikkg/blind-spot" target="_blank" class="project-link">View on GitHub <i class="fas fa-arrow-right"></i></a>
+                        <a href="https://github.com/poorvikkg/blind-spot" target="_blank" class="project-link">View on
+                            GitHub <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -1701,7 +1902,8 @@
             </p>
 
             <div class="cta-buttons">
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=poorvik935@gmail.com" target="_blank" class="cta-btn-primary">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=poorvik935@gmail.com" target="_blank"
+                    class="cta-btn-primary">
                     <i class="far fa-envelope"></i> Hire Me
                 </a>
                 <a href="poorvikmain.pdf" download class="cta-btn-secondary">
@@ -1710,7 +1912,8 @@
             </div>
 
             <div class="cta-links">
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=poorvik935@gmail.com" target="_blank" class="cta-link">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=poorvik935@gmail.com" target="_blank"
+                    class="cta-link">
                     <i class="far fa-envelope"></i> poorvik935@gmail.com
                 </a>
                 <span class="cta-divider">•</span>
@@ -1765,7 +1968,7 @@
             const nav = document.getElementById('navLinks');
             const icon = document.querySelector('.mobile-menu-btn i');
             nav.classList.toggle('active');
-            
+
             if (nav.classList.contains('active')) {
                 icon.classList.remove('fa-bars');
                 icon.classList.add('fa-times');
@@ -1780,7 +1983,7 @@
             link.addEventListener('click', () => {
                 const nav = document.getElementById('navLinks');
                 const icon = document.querySelector('.mobile-menu-btn i');
-                if(nav.classList.contains('active')) {
+                if (nav.classList.contains('active')) {
                     nav.classList.remove('active');
                     icon.classList.remove('fa-times');
                     icon.classList.add('fa-bars');
@@ -1829,13 +2032,13 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    
+
                     // Update section complexity
                     const num = entry.target.getAttribute('data-num');
                     currentNumEl.textContent = num;
-                    
+
                     // Update scroll dot position based on section index
-                    const allSectionIds = ['hero','about','dsa','dev','leadership','projects','contact'];
+                    const allSectionIds = ['hero', 'about', 'dsa', 'dev', 'leadership', 'projects', 'contact'];
                     const index = allSectionIds.indexOf(entry.target.id);
                     const maxIndex = allSectionIds.length - 1;
                     const percentage = (index / maxIndex) * 100;
@@ -1875,33 +2078,38 @@
         window.addEventListener('resize', resize);
         resize();
 
+        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*";
         class Particle {
             constructor() {
-                this.x = Math.random() * width;
+                this.size = 14;
+                // Snap to a grid pattern (columns)
+                this.x = Math.floor(Math.random() * (width / this.size)) * this.size;
                 this.y = Math.random() * height;
-                this.size = Math.random() * 2;
-                this.speedX = Math.random() * 0.5 - 0.25;
-                this.speedY = Math.random() * 0.5 - 0.25;
-                this.opacity = Math.random() * 0.5;
+                this.speedY = Math.random() * 1.5 + 0.5;
+                this.opacity = Math.random() * 0.3 + 0.1;
+                this.char = chars[Math.floor(Math.random() * chars.length)];
             }
             update() {
-                this.x += this.speedX;
                 this.y += this.speedY;
-                if (this.x > width || this.x < 0) this.speedX *= -1;
-                if (this.y > height || this.y < 0) this.speedY *= -1;
+                if (this.y > height) {
+                    this.y = 0;
+                    this.x = Math.floor(Math.random() * (width / this.size)) * this.size;
+                }
+                if (Math.random() < 0.05) {
+                    this.char = chars[Math.floor(Math.random() * chars.length)];
+                }
             }
             draw() {
-                ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
+                ctx.fillStyle = `rgba(180, 180, 180, ${this.opacity})`;
+                ctx.font = `${this.size}px monospace`;
+                ctx.fillText(this.char, this.x, this.y);
             }
         }
 
         function initParticles() {
             particles = [];
             const isMobile = window.innerWidth <= 768;
-            const particleCount = isMobile ? 20 : 50;
+            const particleCount = isMobile ? 15 : 40; // Less particles for a cleaner look
             for (let i = 0; i < particleCount; i++) {
                 particles.push(new Particle());
             }
@@ -1936,4 +2144,5 @@
         animateParticles();
     </script>
 </body>
+
 </html>
