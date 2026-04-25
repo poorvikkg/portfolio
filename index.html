@@ -356,7 +356,8 @@
             z-index: 1001; /* Ensure trigger and its children stay on top */
         }
 
-        .contact-dropdown-wrap:hover .contact-dropdown {
+        .contact-dropdown-wrap:hover .contact-dropdown,
+        .contact-dropdown-wrap.active .contact-dropdown {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
@@ -1772,6 +1773,37 @@
                     icon.classList.add('fa-bars');
                 }
             });
+        });
+
+        // Toggle contact dropdown on click for mobile
+        const contactToggle = document.querySelector('.contact-dropdown-wrap .btn-link');
+        if (contactToggle) {
+            contactToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                const wrap = contactToggle.closest('.contact-dropdown-wrap');
+                wrap.classList.toggle('active');
+            });
+        }
+
+        // Close menus when clicking outside
+        document.addEventListener('click', (e) => {
+            // Close mobile nav if clicked outside
+            const nav = document.getElementById('navLinks');
+            const mobileBtn = document.querySelector('.mobile-menu-btn');
+            if (nav && nav.classList.contains('active') && !nav.contains(e.target) && !mobileBtn.contains(e.target)) {
+                nav.classList.remove('active');
+                if (mobileBtn) {
+                    const icon = mobileBtn.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            }
+
+            // Close contact dropdown if clicked outside
+            const contactWrap = document.querySelector('.contact-dropdown-wrap');
+            if (contactWrap && contactWrap.classList.contains('active') && !contactWrap.contains(e.target)) {
+                contactWrap.classList.remove('active');
+            }
         });
 
         const observerOptions = {
