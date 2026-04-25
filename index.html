@@ -356,11 +356,18 @@
             z-index: 1001; /* Ensure trigger and its children stay on top */
         }
 
-        .contact-dropdown-wrap:hover .contact-dropdown,
         .contact-dropdown-wrap.active .contact-dropdown {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
+        }
+
+        @media (hover: hover) {
+            .contact-dropdown-wrap:hover .contact-dropdown {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
         }
 
         .contact-dropdown a {
