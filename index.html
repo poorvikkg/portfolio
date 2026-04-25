@@ -44,6 +44,22 @@
             align-items: center;
         }
 
+        .header-socials {
+            display: none;
+            align-items: center;
+        }
+
+        .header-socials a {
+            color: var(--text-color);
+            font-size: 20px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .header-socials a:hover {
+            color: var(--text-gray);
+        }
+
         .nav-links {
             display: flex;
             gap: 40px;
@@ -1060,12 +1076,16 @@
                 width: 100%;
                 background: rgba(0, 0, 0, 0.95);
                 padding: 20px 30px;
-                justify-content: flex-end;
+                justify-content: space-between;
                 align-items: center;
                 z-index: 1000;
                 border-bottom: 1px solid var(--border-color);
                 backdrop-filter: blur(10px);
                 -webkit-backdrop-filter: blur(10px);
+            }
+            .header-socials {
+                display: flex;
+                gap: 20px;
             }
             .mobile-menu-btn {
                 display: block;
@@ -1249,6 +1269,12 @@
 
     <!-- Top Navigation -->
     <nav>
+        <div class="header-socials">
+            <a href="https://www.linkedin.com/in/poorvik-kuthyala/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/poorvikkg" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=poorvik935@gmail.com" target="_blank" title="Email"><i class="far fa-envelope"></i></a>
+            <a href="tel:+918867070511" title="Phone"><i class="fas fa-phone-alt"></i></a>
+        </div>
         <div class="mobile-menu-btn" onclick="toggleMenu()">
             <i class="fas fa-bars"></i>
         </div>
