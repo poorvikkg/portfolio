@@ -47,17 +47,47 @@
         .header-socials {
             display: none;
             align-items: center;
+            gap: 25px;
         }
 
-        .header-socials a {
+        .header-socials a, .header-socials .copy-link {
             color: var(--text-color);
             font-size: 20px;
             text-decoration: none;
             transition: color 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .header-socials a:hover {
+        .header-socials a:hover, .header-socials .copy-link:hover {
             color: var(--text-gray);
+        }
+
+        .copy-tooltip {
+            position: absolute;
+            top: 130%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fff;
+            color: #000;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: 600;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease;
+            pointer-events: none;
+        }
+
+        .copy-tooltip.show {
+            opacity: 1;
+            visibility: visible;
+            top: 150%;
         }
 
         .nav-links {
@@ -1085,7 +1115,7 @@
             }
             .header-socials {
                 display: flex;
-                gap: 20px;
+                gap: 25px;
             }
             .mobile-menu-btn {
                 display: block;
@@ -1272,8 +1302,8 @@
         <div class="header-socials">
             <a href="https://www.linkedin.com/in/poorvik-kuthyala/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
             <a href="https://github.com/poorvikkg" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=poorvik935@gmail.com" target="_blank" title="Email"><i class="far fa-envelope"></i></a>
-            <a href="tel:+918867070511" title="Phone"><i class="fas fa-phone-alt"></i></a>
+            <span class="copy-link" onclick="copyToClipboard('poorvik935@gmail.com', this)" title="Copy Email"><i class="far fa-envelope"></i></span>
+            <span class="copy-link" onclick="copyToClipboard('+918867070511', this)" title="Copy Phone"><i class="fas fa-phone-alt"></i></span>
         </div>
         <div class="mobile-menu-btn" onclick="toggleMenu()">
             <i class="fas fa-bars"></i>
@@ -1696,6 +1726,25 @@
         const navLinks = document.querySelectorAll('.nav-links a');
         const currentNumEl = document.getElementById('current-section-num');
         const scrollDot = document.getElementById('scroll-dot');
+
+        // Copy to clipboard
+        function copyToClipboard(text, element) {
+            navigator.clipboard.writeText(text).then(() => {
+                let tooltip = element.querySelector('.copy-tooltip');
+                if (!tooltip) {
+                    tooltip = document.createElement('div');
+                    tooltip.className = 'copy-tooltip';
+                    element.appendChild(tooltip);
+                }
+                tooltip.textContent = 'Copied!';
+                tooltip.classList.add('show');
+                setTimeout(() => {
+                    tooltip.classList.remove('show');
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
 
         // Mobile Menu Toggle
         function toggleMenu() {
