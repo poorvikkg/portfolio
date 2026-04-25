@@ -40,10 +40,25 @@
             padding: 40px 60px;
             z-index: 100;
             display: flex;
-            gap: 40px;
+            justify-content: flex-end;
+            align-items: center;
         }
 
-        nav a {
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            color: var(--text-color);
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 101;
+        }
+
+        .nav-links a {
             color: var(--text-color);
             text-decoration: none;
             font-size: 14px;
@@ -52,11 +67,11 @@
             transition: color 0.3s ease;
         }
 
-        nav a:hover {
+        .nav-links a:hover {
             color: var(--text-gray);
         }
 
-        nav a.active::after {
+        .nav-links a.active::after {
             content: '';
             position: absolute;
             bottom: -5px;
@@ -1044,23 +1059,41 @@
                 right: 0;
                 width: 100%;
                 background: rgba(0, 0, 0, 0.95);
-                padding: 15px 20px;
-                overflow-x: auto;
-                white-space: nowrap;
-                justify-content: flex-start;
-                z-index: 100;
+                padding: 20px 30px;
+                justify-content: flex-end;
+                align-items: center;
+                z-index: 1000;
                 border-bottom: 1px solid var(--border-color);
                 backdrop-filter: blur(10px);
-                -webkit-overflow-scrolling: touch;
+                -webkit-backdrop-filter: blur(10px);
             }
-            nav a {
-                padding: 12px 18px;
-                margin-right: 5px;
-                font-size: 16px;
+            .mobile-menu-btn {
+                display: block;
+            }
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 250px;
+                height: 100vh;
+                background: #050505;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 40px;
+                transition: right 0.4s ease;
+                border-left: 1px solid rgba(255, 255, 255, 0.1);
+                z-index: 999;
+                box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+            }
+            .nav-links.active {
+                right: 0;
+            }
+            .nav-links a {
+                padding: 10px 20px;
+                margin: 0;
+                font-size: 18px;
                 font-weight: 600;
-            }
-            nav::-webkit-scrollbar {
-                display: none;
             }
             section {
                 padding: 80px 30px 40px 30px;
@@ -1216,13 +1249,18 @@
 
     <!-- Top Navigation -->
     <nav>
-        <a href="#hero" class="active">Home</a>
-        <a href="#about">About</a>
-        <a href="#dsa">DSA</a>
-        <a href="#dev">Development</a>
-        <a href="#leadership">Leadership</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+        <div class="mobile-menu-btn" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="#hero" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#dsa">DSA</a>
+            <a href="#dev">Development</a>
+            <a href="#leadership">Leadership</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
     </nav>
 
     <!-- Left Sidebar -->
@@ -1629,9 +1667,37 @@
     <script>
         // Intersection Observer for scroll animations and nav updating
         const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('nav a');
+        const navLinks = document.querySelectorAll('.nav-links a');
         const currentNumEl = document.getElementById('current-section-num');
         const scrollDot = document.getElementById('scroll-dot');
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const nav = document.getElementById('navLinks');
+            const icon = document.querySelector('.mobile-menu-btn i');
+            nav.classList.toggle('active');
+            
+            if (nav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+
+        // Close menu on link click
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                const nav = document.getElementById('navLinks');
+                const icon = document.querySelector('.mobile-menu-btn i');
+                if(nav.classList.contains('active')) {
+                    nav.classList.remove('active');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
 
         const observerOptions = {
             root: null,
