@@ -258,9 +258,10 @@
             position: absolute;
             top: 100%;
             left: 0;
-            background: rgba(10, 10, 10, 0.95);
+            background: #050505; /* Solid background to prevent overlap transparency */
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 8px;
             padding: 10px;
             display: flex;
