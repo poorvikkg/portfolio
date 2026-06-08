@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Poorvik | Full Stack Developer</title>
+    <title>Poorvik | Backend Developer & AIML Engineer</title>
     <link rel="preload" as="image" href="poorvik_compressed.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         media="print" onload="this.media='all'">
     <noscript>
@@ -54,7 +55,12 @@
         }
 
         /* Sharp Retro Elements */
-        .btn-outline, .skill-pill, .stat-card, .contact-dropdown, .project-card, .tab-btn {
+        .btn-outline,
+        .skill-pill,
+        .stat-card,
+        .contact-dropdown,
+        .project-card,
+        .tab-btn {
             border-radius: 0 !important;
             text-transform: uppercase;
         }
@@ -468,7 +474,8 @@
             -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 40%, transparent 75%);
             opacity: 0.95;
             filter: contrast(1.05) brightness(0.95);
-            mix-blend-mode: lighten; /* This seamlessly blends any baked-in black background into the new gray theme! */
+            mix-blend-mode: lighten;
+            /* This seamlessly blends any baked-in black background into the new gray theme! */
         }
 
         /* Scroll indicator */
@@ -1486,6 +1493,7 @@
             <a href="#dev">Development</a>
             <a href="#leadership">Leadership</a>
             <a href="#projects">Projects</a>
+            <a href="#education">Education</a>
             <a href="#contact">Contact</a>
         </div>
     </nav>
@@ -1520,9 +1528,10 @@
             <div class="hero-content">
                 <p class="greeting">Hello, I'm</p>
                 <h1 class="professional-title">Poorvik</h1>
-                <h2 class="title">Full Stack Developer</h2>
+                <h2 class="title" id="typewriter-title">Backend Developer</h2>
                 <p class="hero-desc">
-                    I build scalable web applications and solve complex problems using DSA.
+                    I build robust backend systems, train intelligent AI/ML models, and solve complex algorithmic
+                    problems.
                 </p>
                 <div class="hero-buttons">
                     <a href="poorvikResumeMain.pdf" download class="btn-outline"
@@ -1591,16 +1600,16 @@
             <h2 class="section-title">Data Structures & Algorithms</h2>
             <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 20px;">
                 <a href="https://leetcode.com/u/Poorvikkg/" target="_blank" class="stat-card">
-                    <div class="stat-num">1500+</div>
+                    <div class="stat-num">2000+</div>
                     <div class="stat-label">Total Problems Solved</div>
                 </a>
                 <a href="https://leetcode.com/u/Poorvikkg/" target="_blank" class="stat-card">
-                    <div class="stat-num">900+</div>
+                    <div class="stat-num">1100+</div>
                     <div class="stat-label">LeetCode Solved</div>
                 </a>
                 <a href="https://www.geeksforgeeks.org/profile/poorvikkg?tab=overview" target="_blank"
                     class="stat-card">
-                    <div class="stat-num">350+</div>
+                    <div class="stat-num">400+</div>
                     <div class="stat-label">GFG Solved</div>
                 </a>
                 <a href="https://www.geeksforgeeks.org/profile/poorvikkg?tab=overview" target="_blank"
@@ -1609,7 +1618,7 @@
                     <div class="stat-label">GFG Institute Rank</div>
                 </a>
                 <a href="https://leetcode.com/u/Poorvikkg/" target="_blank" class="stat-card">
-                    <div class="stat-num">2128</div>
+                    <div class="stat-num">2129</div>
                     <div class="stat-label">LeetCode Contest Rating</div>
                 </a>
             </div>
@@ -1737,11 +1746,11 @@
                         700+ competing teams by building an innovative solution.</div>
                 </div>
                 <div class="stat-card" style="display: flex; flex-direction: column; justify-content: center;">
-                    <div class="stat-num" style="font-size: 22px;">Freelance Lead</div>
+                    <div class="stat-num" style="font-size: 22px;">LeetCode Guardian</div>
                     <div class="stat-label" style="font-weight: 600; margin-bottom: 15px; color: var(--text-color);">
-                        Full-Stack Project</div>
-                    <div class="stat-label" style="line-height: 1.5; font-size: 13px;">Led a 14-member team to build a
-                        hostel laundry management system, generating ₹40k+ in revenue.</div>
+                        Competitive Programming</div>
+                    <div class="stat-label" style="line-height: 1.5; font-size: 13px;">Achieved the prestigious Guardian
+                        badge on LeetCode, ranking in the top tier of competitive programmers globally.</div>
                 </div>
             </div>
         </section>
@@ -1815,23 +1824,24 @@
                     <!-- Project 3 -->
                     <div class="project-card">
                         <div class="project-number">03</div>
-                        <div class="project-icon"><i class="fas fa-comments"></i></div>
-                        <h3 class="project-title">College Communication System</h3>
-                        <p class="project-desc" style="margin-bottom: 20px; flex-grow: 0;">A scalable platform for
-                            managing and broadcasting messages within a college environment.</p>
+                        <div class="project-icon"><i class="fas fa-project-diagram"></i></div>
+                        <h3 class="project-title">Fixy</h3>
+                        <p class="project-desc" style="margin-bottom: 20px; flex-grow: 0;">An AI-powered system
+                            architecture platform that automates high/low-level designs and analyzes codebases to
+                            identify performance bottlenecks.</p>
                         <ul class="project-features">
-                            <li>Role-based communication (admin/students)</li>
-                            <li>Announcement and notification system</li>
-                            <li>Structured message delivery</li>
-                            <li>Containerized microservice-ready design</li>
+                            <li>Generates HLD and LLD from user requirements</li>
+                            <li>Analyzes existing codebases to identify bottlenecks</li>
+                            <li>Suggests scalability & performance improvements</li>
+                            <li>Guides system design from concept to production</li>
                         </ul>
                         <div class="tech-stack" style="margin-top: auto;">
-                            <span class="tech-tag">Spring Boot</span>
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">PostgreSQL</span>
-                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">NextJs</span>
+                            <span class="tech-tag">NodeJs</span>
+                            <span class="tech-tag">LangChain</span>
+                            <span class="tech-tag">System Design</span>
                         </div>
-                        <a href="https://github.com/poorvikkg/sagaJava" target="_blank" class="project-link">View on
+                        <a href="https://github.com/poorvikkg/fixy" target="_blank" class="project-link">View on
                             GitHub <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
@@ -1887,11 +1897,72 @@
                         <a href="https://github.com/poorvikkg/blind-spot" target="_blank" class="project-link">View on
                             GitHub <i class="fas fa-arrow-right"></i></a>
                     </div>
+
+                    <!-- AI Project 3 -->
+                    <div class="project-card">
+                        <div class="project-number">03</div>
+                        <div class="project-icon"><i class="fas fa-pills"></i></div>
+                        <h3 class="project-title">MediCare</h3>
+                        <p class="project-desc" style="margin-bottom: 20px; flex-grow: 0;">An accessible, voice-guided
+                            medicine reminder system built to help elderly patients manage medication regimens using
+                            camera-based pill verification.</p>
+                        <ul class="project-features">
+                            <li>Accessible high-contrast UI with large typography</li>
+                            <li>Voice assistant integration (TTS and voice input)</li>
+                            <li>Camera-based pill verification (OCR & color AI)</li>
+                            <li>Simplified navigation & large tappable controls</li>
+                        </ul>
+                        <div class="tech-stack" style="margin-top: auto;">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">Express.js</span>
+                            <span class="tech-tag">Web Speech API</span>
+                            <span class="tech-tag">AI/OCR</span>
+                        </div>
+                        <a href="https://github.com/poorvikkg/medicine" target="_blank" class="project-link">View on
+                            GitHub <i class="fas fa-arrow-right"></i></a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Section 07: Contact -->
+        <!-- Section 07: Education -->
+        <section id="education" data-num="O(n!)">
+            <div class="section-label">ACADEMIC BACKGROUND</div>
+            <h2 class="section-title">Education</h2>
+
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px;">
+
+                <!-- Engineering -->
+                <div class="stat-card" style="display: flex; flex-direction: column; justify-content: flex-start; text-align: left; padding: 30px;">
+                    <div class="stat-label" style="font-size: 12px; border: 1px solid var(--border-color); padding: 4px 12px; display: inline-block; margin-bottom: 15px; width: fit-content;">2023 — 2027</div>
+                    <div class="stat-num" style="font-size: 18px; text-align: left; margin-bottom: 8px;">B.E. — AI & ML</div>
+                    <div class="stat-label" style="font-weight: 600; margin-bottom: 12px; color: var(--text-color);">St Joseph Enginnering Collge,Mangalore</div>
+                    <div class="stat-label" style="line-height: 1.6; font-size: 13px; margin-bottom: 15px;">Pursuing B.E. in AI &amp; ML with focus on deep learning, backend systems, and competitive programming.</div>
+                    <div class="stat-label" style="font-size: 13px; font-weight: 700; margin-top: auto; border-top: 1px solid var(--border-color); padding-top: 10px; color: var(--text-color);">CGPA: 8.46</div>
+                </div>
+
+                <!-- PUC -->
+                <div class="stat-card" style="display: flex; flex-direction: column; justify-content: flex-start; text-align: left; padding: 30px;">
+                    <div class="stat-label" style="font-size: 12px; border: 1px solid var(--border-color); padding: 4px 12px; display: inline-block; margin-bottom: 15px; width: fit-content;">2021 — 2023</div>
+                    <div class="stat-num" style="font-size: 18px; text-align: left; margin-bottom: 8px;">PUC — Science (PCMB)</div>
+                    <div class="stat-label" style="font-weight: 600; margin-bottom: 12px; color: var(--text-color);">St Philomena PU College,Puttur</div>
+                    <div class="stat-label" style="line-height: 1.6; font-size: 13px; margin-bottom: 15px;">Completed pre-university education with Physics, Chemistry, Mathematics, and Biology.</div>
+                    <div class="stat-label" style="font-size: 13px; font-weight: 700; margin-top: auto; border-top: 1px solid var(--border-color); padding-top: 10px; color: var(--text-color);">Percentage: 93%</div>
+                </div>
+
+                <!-- SSLC -->
+                <div class="stat-card" style="display: flex; flex-direction: column; justify-content: flex-start; text-align: left; padding: 30px;">
+                    <div class="stat-label" style="font-size: 12px; border: 1px solid var(--border-color); padding: 4px 12px; display: inline-block; margin-bottom: 15px; width: fit-content;">2021</div>
+                    <div class="stat-num" style="font-size: 18px; text-align: left; margin-bottom: 8px;">SSLC — Secondary School</div>
+                    <div class="stat-label" style="font-weight: 600; margin-bottom: 12px; color: var(--text-color);">St Kuriakose English Medium School,Sullia</div>
+                    <div class="stat-label" style="line-height: 1.6; font-size: 13px; margin-bottom: 15px;">Completed secondary school education with distinction.</div>
+                    <div class="stat-label" style="font-size: 13px; font-weight: 700; margin-top: auto; border-top: 1px solid var(--border-color); padding-top: 10px; color: var(--text-color);">Percentage: 86%</div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Section 08: Contact -->
         <section id="contact" data-num="O(∞)">
             <div class="cta-glow"></div>
 
@@ -2039,7 +2110,7 @@
                     currentNumEl.textContent = num;
 
                     // Update scroll dot position based on section index
-                    const allSectionIds = ['hero', 'about', 'dsa', 'dev', 'leadership', 'projects', 'contact'];
+                    const allSectionIds = ['hero', 'about', 'dsa', 'dev', 'leadership', 'projects', 'education', 'contact'];
                     const index = allSectionIds.indexOf(entry.target.id);
                     const maxIndex = allSectionIds.length - 1;
                     const percentage = (index / maxIndex) * 100;
@@ -2143,6 +2214,44 @@
 
         initParticles();
         animateParticles();
+
+        // Typewriter Effect for Hero Title
+        const words = ["Backend Developer", "AIML Engineer", "Competitive Programmer"];
+        let wordIndex = 0;
+        let charIndex = words[0].length;
+        let isDeleting = true;
+        const typewriterEl = document.getElementById('typewriter-title');
+        const typingSpeed = 100;
+        const deletingSpeed = 50;
+        const delayBetweenWords = 2000;
+
+        function type() {
+            if (!typewriterEl) return;
+            const currentWord = words[wordIndex];
+            if (isDeleting) {
+                typewriterEl.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriterEl.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? deletingSpeed : typingSpeed;
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                typeSpeed = delayBetweenWords;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        // Start typewriter effect after initial delay
+        setTimeout(type, delayBetweenWords);
     </script>
 </body>
 
