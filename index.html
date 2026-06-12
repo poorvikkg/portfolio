@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Poorvik Kuthyala's portfolio - Backend Developer & AIML Engineer. Discover my projects in software engineering, competitive programming, and AI/ML.">
     <title>Poorvik | Backend Developer & AIML Engineer</title>
     <link rel="preload" as="image" href="poorvik_compressed.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -952,6 +953,13 @@
             background: rgba(255, 255, 255, 0.1);
         }
 
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            max-width: 900px;
+        }
+
         /* ── Premium Contact / CTA Section ────────────────────────── */
         #contact {
             position: relative;
@@ -1411,6 +1419,11 @@
                 gap: 30px;
             }
 
+            .education-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
             .skill-pill {
                 font-size: 16px;
                 padding: 12px 24px;
@@ -1462,6 +1475,244 @@
             .cta-buttons {
                 flex-direction: column;
                 width: 100%;
+            }
+        }
+
+        /* Interactive Terminal CSS & Floating Drawer Styles */
+        .terminal-trigger {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 55px;
+            height: 55px;
+            background: #0d0d0d;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 9998;
+            font-family: 'Space Mono', monospace;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        .terminal-trigger i {
+            font-size: 16px;
+            margin-bottom: 2px;
+            transition: transform 0.3s ease;
+        }
+
+        .terminal-trigger-text {
+            font-size: 8px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .terminal-trigger:hover {
+            border-color: #27c93f;
+            box-shadow: 0 0 15px rgba(39, 201, 63, 0.4);
+            transform: scale(1.05);
+            background: #121212;
+        }
+
+        .terminal-trigger:hover i {
+            color: #27c93f;
+            transform: rotate(5deg);
+        }
+
+        /* Pulsing indicator when panel is closed */
+        .terminal-trigger.pulse {
+            animation: trigger-pulse-animation 2s infinite;
+        }
+
+        @keyframes trigger-pulse-animation {
+            0% { border-color: var(--border-color); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6); }
+            50% { border-color: rgba(39, 201, 63, 0.7); box-shadow: 0 0 15px rgba(39, 201, 63, 0.3); }
+            100% { border-color: var(--border-color); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6); }
+        }
+
+        .terminal-panel {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 440px;
+            height: 100vh;
+            height: 100dvh;
+            background: rgba(13, 13, 13, 0.95);
+            border-left: 1px solid var(--border-color);
+            box-shadow: -10px 0 40px rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.1, 0.9, 0.2, 1);
+            overflow: hidden;
+        }
+
+        .terminal-panel.open {
+            transform: translateX(0);
+        }
+
+        .terminal-header {
+            background: #151515;
+            border-bottom: 1px solid var(--border-color);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 11px;
+            color: var(--text-gray);
+            user-select: none;
+        }
+
+        .terminal-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .terminal-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            border: 1px solid var(--border-color);
+        }
+        
+        .terminal-dot.red { background-color: #ff5f56; border-color: #e0443e; }
+        .terminal-dot.yellow { background-color: #ffbd2e; border-color: #dea123; }
+        .terminal-dot.green { background-color: #27c93f; border-color: #1aab29; }
+
+        .terminal-title {
+            letter-spacing: 1px;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+
+        .terminal-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #27c93f;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #27c93f;
+            animation: pulse-green 1.5s infinite;
+        }
+
+        @keyframes pulse-green {
+            0% { transform: scale(0.9); opacity: 0.6; }
+            50% { transform: scale(1.1); opacity: 1; box-shadow: 0 0 12px #27c93f; }
+            100% { transform: scale(0.9); opacity: 0.6; }
+        }
+
+        .terminal-body {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #d1d1d1;
+            scroll-behavior: smooth;
+        }
+
+        .terminal-body::-webkit-scrollbar {
+            width: 6px;
+        }
+        .terminal-body::-webkit-scrollbar-track {
+            background: #0d0d0d;
+        }
+        .terminal-body::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+        }
+
+        .terminal-line {
+            white-space: pre-wrap;
+            word-break: normal;
+            overflow-wrap: break-word;
+        }
+
+        .terminal-prompt-line {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .terminal-prompt-prefix {
+            color: #27c93f;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .terminal-prompt-input {
+            flex-grow: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: var(--text-color);
+            font-family: 'Space Mono', monospace;
+            font-size: 14px;
+            width: 100%;
+        }
+
+        .terminal-output-error {
+            color: #ff5f56;
+        }
+
+        .terminal-output-success {
+            color: #27c93f;
+        }
+
+        .terminal-output-accent {
+            color: var(--text-color);
+            font-weight: 700;
+        }
+
+        .terminal-output-dim {
+            color: var(--text-gray);
+        }
+
+        .terminal-close-mobile {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            font-size: 16px;
+            color: var(--text-gray);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .terminal-close-mobile:hover {
+            color: var(--text-color);
+        }
+
+        /* Mobile specific style for slide out */
+        @media (max-width: 768px) {
+            .terminal-panel {
+                width: 100%;
+                border-left: none;
+            }
+            .terminal-trigger {
+                bottom: 20px;
+                right: 20px;
+            }
+            .terminal-prompt-input, .terminal-body {
+                font-size: 16px;
+            }
+            .terminal-close-mobile {
+                display: flex;
             }
         }
     </style>
@@ -1622,7 +1873,7 @@
                     <div class="stat-label">LeetCode Contest Rating</div>
                 </a>
             </div>
-            <div style="display: flex; gap: 20px; justify-content: center; margin-top: 50px; max-width: 900px;">
+            <div style="display: flex; gap: 20px; justify-content: center; margin-top: 50px; max-width: 900px; flex-wrap: wrap;">
                 <a href="https://leetcode.com/u/Poorvikkg/" target="_blank" class="btn-outline"
                     style="display: flex; align-items: center; gap: 10px;">
                     <i class="fas fa-code"></i> LeetCode Profile
@@ -1767,8 +2018,8 @@
             </div>
 
             <div class="project-tabs">
-                <button class="tab-btn active" onclick="switchProjectTab('web')">Web Development</button>
-                <button class="tab-btn" onclick="switchProjectTab('aiml')">AI / Machine Learning</button>
+                <button class="tab-btn active" onclick="switchProjectTab(event, 'web')">Web Development</button>
+                <button class="tab-btn" onclick="switchProjectTab(event, 'aiml')">AI / Machine Learning</button>
             </div>
 
             <!-- Web Development Projects -->
@@ -1930,7 +2181,7 @@
             <div class="section-label">ACADEMIC BACKGROUND</div>
             <h2 class="section-title">Education</h2>
 
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px;">
+            <div class="education-grid">
 
                 <!-- Engineering -->
                 <div class="stat-card" style="display: flex; flex-direction: column; justify-content: flex-start; text-align: left; padding: 30px;">
@@ -2009,7 +2260,45 @@
         </section>
     </main>
 
+    <!-- Floating Terminal Trigger Button -->
+    <div class="terminal-trigger pulse" id="terminal-trigger" onclick="toggleTerminalPanel()" title="Interactive Shell (Press `)">
+        <i class="fas fa-terminal"></i>
+        <span class="terminal-trigger-text">SHELL</span>
+    </div>
+
+    <!-- Slide-out Terminal Panel Drawer -->
+    <div class="terminal-panel" id="terminal-panel">
+        <div class="terminal-header">
+            <div class="terminal-dots">
+                <div class="terminal-dot red" onclick="toggleTerminalPanel()" style="cursor: pointer;" title="Close"></div>
+                <div class="terminal-dot yellow"></div>
+                <div class="terminal-dot green"></div>
+            </div>
+            <div class="terminal-title">guest@retro-pc:~</div>
+            <div class="terminal-status-wrap" style="display: flex; align-items: center; gap: 15px;">
+                <div class="terminal-status">
+                    <span class="status-dot"></span>
+                    <span>ONLINE</span>
+                </div>
+                <div class="terminal-close-mobile" onclick="toggleTerminalPanel()" title="Close Terminal"><i class="fas fa-times"></i></div>
+            </div>
+        </div>
+        <div class="terminal-body" id="terminal-body">
+            <div class="terminal-line terminal-output-dim">Welcome to Poorvik's Interactive Shell v2.2.0.</div>
+            <div class="terminal-line">Type <span class="terminal-output-success">help</span> for commands, press <span class="terminal-output-accent">Tab</span> to autocomplete, or <span class="terminal-output-accent">`</span> to close.</div>
+            
+            <div id="terminal-history"></div>
+
+            <div class="terminal-prompt-line">
+                <span class="terminal-prompt-prefix">guest@poorvik:~$</span>
+                <input type="text" id="terminal-input" class="terminal-prompt-input" autocomplete="off" spellcheck="false">
+            </div>
+        </div>
+    </div>
+
     <script>
+
+
         // Intersection Observer for scroll animations and nav updating
         const sections = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('.nav-links a');
@@ -2091,6 +2380,13 @@
             const contactWrap = document.querySelector('.contact-dropdown-wrap');
             if (contactWrap && contactWrap.classList.contains('active') && !contactWrap.contains(e.target)) {
                 contactWrap.classList.remove('active');
+            }
+
+            // Close terminal panel if clicked outside
+            const panel = document.getElementById('terminal-panel');
+            const trigger = document.getElementById('terminal-trigger');
+            if (panel && panel.classList.contains('open') && !panel.contains(e.target) && !trigger.contains(e.target)) {
+                toggleTerminalPanel();
             }
         });
 
@@ -2198,18 +2494,31 @@
             requestAnimationFrame(animateParticles);
         }
 
-        function switchProjectTab(tabId) {
+        function switchProjectTab(e, tabId) {
+            // Support calling without event or with old signature
+            let eventRef = e;
+            let actualTabId = tabId;
+            if (typeof e === 'string') {
+                actualTabId = e;
+                eventRef = window.event;
+            }
+
             // Update buttons
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-            event.target.classList.add('active');
+
+            if (eventRef) {
+                const target = eventRef.currentTarget || eventRef.target;
+                if (target) target.classList.add('active');
+            }
 
             // Update content
             document.querySelectorAll('.tab-content').forEach(content => {
                 content.classList.remove('active');
             });
-            document.getElementById('tab-' + tabId).classList.add('active');
+            const contentEl = document.getElementById('tab-' + actualTabId);
+            if (contentEl) contentEl.classList.add('active');
         }
 
         initParticles();
@@ -2250,9 +2559,273 @@
             setTimeout(type, typeSpeed);
         }
 
+        // Terminal Logic
+        const terminalInput = document.getElementById('terminal-input');
+        const terminalHistory = document.getElementById('terminal-history');
+        const terminalBody = document.getElementById('terminal-body');
+        const shellStartTime = Date.now();
+        
+        let cmdHistory = [];
+        let cmdHistoryIndex = -1;
+
+        const availableCommands = [
+            'help', 'about', 'skills', 'experience', 'projects', 'education', 
+            'contact', 'neofetch', 'clear', 'resume', 'exit'
+        ];
+
+        function toggleTerminalPanel() {
+            const panel = document.getElementById('terminal-panel');
+            const trigger = document.getElementById('terminal-trigger');
+            if (panel) {
+                panel.classList.toggle('open');
+                if (panel.classList.contains('open')) {
+                    setTimeout(focusTerminalInput, 100);
+                    if (trigger) trigger.classList.remove('pulse');
+                } else {
+                    if (trigger) trigger.classList.add('pulse');
+                }
+            }
+        }
+
+        // Global backtick key listener to toggle terminal
+        document.addEventListener('keydown', (e) => {
+            if (e.key === '`') {
+                e.preventDefault();
+                toggleTerminalPanel();
+            }
+        });
+
+        function focusTerminalInput() {
+            if (terminalInput) {
+                terminalInput.focus();
+            }
+        }
+
+        if (terminalInput) {
+            // Keep input focused when clicked inside terminal body
+            terminalBody.addEventListener('click', (e) => {
+                if (e.target !== terminalInput) {
+                    focusTerminalInput();
+                }
+            });
+
+            terminalInput.addEventListener('keydown', function(e) {
+                // Ctrl + L to clear screen
+                if (e.key === 'l' && e.ctrlKey) {
+                    e.preventDefault();
+                    terminalHistory.innerHTML = '';
+                    return;
+                }
+
+                // Contextual Tab Autocomplete
+                if (e.key === 'Tab') {
+                    e.preventDefault();
+                    const val = this.value.trim().toLowerCase();
+                    if (!val) return;
+                    
+                    const parts = val.split(/\s+/);
+                    if (parts.length === 1) {
+                        const matches = availableCommands.filter(c => c.startsWith(parts[0]));
+                        if (matches.length === 1) {
+                            this.value = matches[0] + ' ';
+                        } else if (matches.length > 1) {
+                            const line = document.createElement('div');
+                            line.className = 'terminal-prompt-line';
+                            line.innerHTML = `<span class="terminal-prompt-prefix">guest@poorvik:~$</span> <span class="terminal-output-accent">${escapeHtml(this.value)}</span>`;
+                            terminalHistory.appendChild(line);
+                            
+                            const matchLine = document.createElement('div');
+                            matchLine.className = 'terminal-line terminal-output-dim';
+                            matchLine.textContent = matches.join('    ');
+                            terminalHistory.appendChild(matchLine);
+                            
+                            terminalBody.scrollTop = terminalBody.scrollHeight;
+                        }
+                    }
+                    return;
+                }
+
+                if (e.key === 'Enter') {
+                    const commandLine = this.value;
+                    const command = commandLine.trim();
+                    
+                    if (command !== '') {
+                        cmdHistory.push(commandLine);
+                        cmdHistoryIndex = cmdHistory.length;
+                    }
+                    
+                    // Print prompt and typed command
+                    const line = document.createElement('div');
+                    line.className = 'terminal-prompt-line';
+                    line.innerHTML = `<span class="terminal-prompt-prefix">guest@poorvik:~$</span> <span class="terminal-output-accent">${escapeHtml(commandLine)}</span>`;
+                    terminalHistory.appendChild(line);
+                    
+                    // Process Command
+                    const response = processCommand(command.toLowerCase());
+                    if (response) {
+                        const respLine = document.createElement('div');
+                        respLine.className = 'terminal-line';
+                        respLine.innerHTML = response;
+                        terminalHistory.appendChild(respLine);
+                    }
+                    
+                    this.value = '';
+                    terminalBody.scrollTop = terminalBody.scrollHeight;
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    if (cmdHistory.length > 0 && cmdHistoryIndex > 0) {
+                        cmdHistoryIndex--;
+                        this.value = cmdHistory[cmdHistoryIndex];
+                    }
+                } else if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    if (cmdHistory.length > 0 && cmdHistoryIndex < cmdHistory.length - 1) {
+                        cmdHistoryIndex++;
+                        this.value = cmdHistory[cmdHistoryIndex];
+                    } else {
+                        cmdHistoryIndex = cmdHistory.length;
+                        this.value = '';
+                    }
+                }
+            });
+        }
+
+        function escapeHtml(str) {
+            return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        }
+
+        function processCommand(cmd) {
+            if (!cmd) return '';
+            const parts = cmd.split(/\s+/);
+            const baseCmd = parts[0];
+            
+            switch (baseCmd) {
+                case 'help':
+                    return `Available commands:
+  <span class="terminal-output-success">about</span>      - Short bio/overview
+  <span class="terminal-output-success">skills</span>     - Technical skill stack
+  <span class="terminal-output-success">experience</span> - Work experience
+  <span class="terminal-output-success">projects</span>   - Core software & AI projects
+  <span class="terminal-output-success">education</span>  - Academic background
+  <span class="terminal-output-success">contact</span>    - Contact details & links
+  <span class="terminal-output-success">neofetch</span>   - System information
+  <span class="terminal-output-success">clear</span>      - Clear screen
+  <span class="terminal-output-success">resume</span>     - Download PDF Resume
+  <span class="terminal-output-success">exit</span>       - Close terminal panel`;
+                    
+                case 'about':
+                    return `I'm an AIML undergraduate student with a passion for software engineering, building scalable backends, training intelligent models, and solving complex algorithmic challenges. I value discipline, consistency, and clarity in code.`;
+                    
+                case 'skills':
+                    return `<span class="terminal-output-accent">LANGUAGES:</span> C++, Java, Python, JavaScript, SQL
+<span class="terminal-output-accent">DATABASES:</span> MySQL, PostgreSQL, MongoDB, Redis, FAISS
+<span class="terminal-output-accent">FRAMEWORKS:</span> Node.js, Express.js, Spring Boot, React, Next.js
+<span class="terminal-output-accent">TOOLS & DEVOPS:</span> Git, Docker, Kubernetes, Linux, Postman`;
+                    
+                case 'experience':
+                    return `<span class="terminal-output-accent">1. Backend Intern @ ITJOBXS (Feb 2026 - May 2026)</span>
+   - Engineered Java/MySQL backend modules, boosting throughput by 35%.
+   - Architected automated email notification pipelines using JavaMail API.
+
+<span class="terminal-output-accent">2. Full Stack Developer (Freelance) @ Ilaundroid (Aug 2025 - Feb 2026)</span>
+   - Built hostel laundry platform for 2 colleges, serving 3000+ students.
+   - Designed REST APIs with Node.js/MongoDB, reducing latency by 40%.
+
+<span class="terminal-output-accent">3. Backend Developer @ Nucleus Technical Club (Jan 2026 - Mar 2026)</span>
+   - Managed official tech club website backends, supporting 5000+ users.`;
+                    
+                case 'projects':
+                    return `<span class="terminal-output-accent">1. Medicare (AI Project)</span>
+   - Voice-guided, accessible medicine reminder with Tesseract.js OCR verification.
+   
+<span class="terminal-output-accent">2. FaceHunt (AI Project)</span>
+   - Real-time CCTV surveillance system using RetinaFace, ArcFace, and FAISS.
+   
+<span class="terminal-output-accent">3. Circuit Fixer (Web Project)</span>
+   - AI-driven system design assistant utilizing React.js, Redis, and WebSockets.
+   
+<span class="terminal-output-accent">4. Hostel Laundry Management (Web Project)</span>
+   - Full stack administrative tracking system.`;
+                    
+                case 'education':
+                    return `<span class="terminal-output-accent">St Joseph Engineering College, Mangalore</span>
+  - B.E. — AI & ML (2023 - 2027) | <span class="terminal-output-success">CGPA: 8.46</span>
+
+<span class="terminal-output-accent">St Philomena PU College, Puttur</span>
+  - PUC — Science (2021 - 2023) | <span class="terminal-output-success">Percentage: 93%</span>
+
+<span class="terminal-output-accent">St Kuriakose English Medium School, Sullia</span>
+  - SSLC — Secondary School (2021) | <span class="terminal-output-success">Percentage: 86%</span>`;
+                    
+                case 'contact':
+                case 'socials':
+                    return `Email: <a href="mailto:poorvik935@gmail.com" target="_blank" style="color: var(--text-color);">poorvik935@gmail.com</a>
+Phone: +91 88670 70511
+LinkedIn: <a href="https://www.linkedin.com/in/poorvik-kuthyala/" target="_blank" style="color: var(--text-color);">poorvik-kuthyala</a>
+GitHub: <a href="https://github.com/poorvikkg" target="_blank" style="color: var(--text-color);">poorvikkg</a>
+LeetCode: <a href="https://leetcode.com/u/Poorvikkg/" target="_blank" style="color: var(--text-color);">Poorvikkg</a>`;
+                    
+                case 'neofetch':
+                case 'sysinfo': {
+                    const uptimeSecs = Math.floor((Date.now() - shellStartTime) / 1000);
+                    let uptimeStr = '';
+                    if (uptimeSecs < 60) {
+                        uptimeStr = `${uptimeSecs}s`;
+                    } else {
+                        const mins = Math.floor(uptimeSecs / 60);
+                        const secs = uptimeSecs % 60;
+                        uptimeStr = `${mins}m ${secs}s`;
+                    }
+                    const res = `${window.screen.width}x${window.screen.height}`;
+                    
+                    return `
+<div style="display: flex; gap: 20px; font-family: 'Space Mono', monospace; font-size: 13px; line-height: 1.35; flex-wrap: wrap;">
+<pre style="color: #27c93f; margin: 0; font-family: 'Space Mono', monospace; font-weight: bold;">
+    _________________
+   |.---------------.|
+   ||  <span style="color: #ff5f56">●</span> <span style="color: #ffbd2e">●</span> <span style="color: #27c93f">●</span>       ||
+   ||   POORVIK     ||
+   ||   SYSTEM      ||
+   ||_______________||
+   /.-.-.-.-.-.-.-.-.\\
+  /___________________\\
+  \\___________________/
+</pre>
+<div>
+  <span style="color: #27c93f; font-weight: bold;">guest@poorvik-portfolio</span>
+  <br>------------------------
+  <br><span style="color: var(--text-gray);">OS:</span> Poorvik-OS v2.1.0
+  <br><span style="color: var(--text-gray);">Host:</span> Client Web Sandbox
+  <br><span style="color: var(--text-gray);">Uptime:</span> ${uptimeStr}
+  <br><span style="color: var(--text-gray);">Resolution:</span> ${res}
+  <br><span style="color: var(--text-gray);">Shell:</span> RetroShellJS
+  <br><span style="color: var(--text-gray);">Browser:</span> Chrome/WebOS
+</div>
+</div>
+`;
+                }
+
+
+
+                case 'clear':
+                    terminalHistory.innerHTML = '';
+                    return '';
+                    
+                case 'exit':
+                    toggleTerminalPanel();
+                    return 'Closing terminal connection...';
+                    
+                case 'resume':
+                    window.open('poorvikResumeMain.pdf', '_blank');
+                    return '<span class="terminal-output-success">Opening resume (poorvikResumeMain.pdf) in a new tab...</span>';
+                    
+                default:
+                    return `<span class="terminal-output-error">Command not found: ${escapeHtml(baseCmd)}. Type 'help' for a list of commands.</span>`;
+            }
+        }
+
         // Start typewriter effect after initial delay
         setTimeout(type, delayBetweenWords);
     </script>
 </body>
-
 </html>
