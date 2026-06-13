@@ -1866,25 +1866,25 @@
             <h2 class="section-title">Data Structures & Algorithms</h2>
             <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 20px;">
                 <a href="https://leetcode.com/u/Poorvikkg/" target="_blank" class="stat-card">
-                    <div class="stat-num">2000+</div>
+                    <div class="stat-num" data-target="2000" data-suffix="+">2000+</div>
                     <div class="stat-label">Total Problems Solved</div>
                 </a>
                 <a href="https://leetcode.com/u/Poorvikkg/" target="_blank" class="stat-card">
-                    <div class="stat-num">1100+</div>
+                    <div class="stat-num" data-target="1100" data-suffix="+">1100+</div>
                     <div class="stat-label">LeetCode Solved</div>
                 </a>
                 <a href="https://www.geeksforgeeks.org/profile/poorvikkg?tab=overview" target="_blank"
                     class="stat-card">
-                    <div class="stat-num">400+</div>
+                    <div class="stat-num" data-target="400" data-suffix="+">400+</div>
                     <div class="stat-label">GFG Solved</div>
                 </a>
                 <a href="https://www.geeksforgeeks.org/profile/poorvikkg?tab=overview" target="_blank"
                     class="stat-card">
-                    <div class="stat-num">#1</div>
+                    <div class="stat-num" data-target="1" data-prefix="#">#1</div>
                     <div class="stat-label">GFG Institute Rank</div>
                 </a>
                 <a href="https://leetcode.com/u/Poorvikkg/" target="_blank" class="stat-card">
-                    <div class="stat-num">2129</div>
+                    <div class="stat-num" data-target="2129">2129</div>
                     <div class="stat-label">LeetCode Contest Rating</div>
                 </a>
             </div>
@@ -2431,6 +2431,52 @@
             }
         });
 
+        function animateCounters() {
+            const counters = document.querySelectorAll('#dsa .stat-num[data-target]');
+            
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-target'), 10);
+                const prefix = counter.getAttribute('data-prefix') || '';
+                const suffix = counter.getAttribute('data-suffix') || '';
+                
+                // For rank, count down from 100 to target (1)
+                const isRank = prefix === '#';
+                const startVal = isRank ? 100 : 0;
+                
+                let startTime = null;
+                const duration = 1500; // 1.5 seconds for snappy, satisfying animation
+                
+                // Set initial start value
+                counter.textContent = `${prefix}${startVal}${suffix}`;
+                
+                function updateCounter(timestamp) {
+                    if (!startTime) startTime = timestamp;
+                    const progress = timestamp - startTime;
+                    const percentage = Math.min(progress / duration, 1);
+                    
+                    // Ease out cubic for a premium decelerating feel
+                    const easeProgress = 1 - Math.pow(1 - percentage, 3);
+                    
+                    let currentVal;
+                    if (isRank) {
+                        currentVal = Math.round(startVal - (easeProgress * (startVal - target)));
+                    } else {
+                        currentVal = Math.round(easeProgress * target);
+                    }
+                    
+                    counter.textContent = `${prefix}${currentVal}${suffix}`;
+                    
+                    if (percentage < 1) {
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = `${prefix}${target}${suffix}`;
+                    }
+                }
+                
+                requestAnimationFrame(updateCounter);
+            });
+        }
+
         const observerOptions = {
             root: null,
             rootMargin: '0px',
@@ -2441,6 +2487,12 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+
+                    // Trigger stats count up when DSA section is visible
+                    if (entry.target.id === 'dsa' && !entry.target.classList.contains('counters-animated')) {
+                        entry.target.classList.add('counters-animated');
+                        animateCounters();
+                    }
 
                     // Update section complexity
                     const num = entry.target.getAttribute('data-num');
@@ -2865,6 +2917,9 @@ LeetCode: <a href="https://leetcode.com/u/Poorvikkg/" target="_blank" style="col
             }
         }
 
+        // Google Sheets Script Web App URL - Replace this with your own URL after deploying the Apps Script
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwY28G8sShCLRd6zlfQX4OdGyzS4wtsWEO_7krZoqm5J7G6twwfkFNdbbod9xd_VUnwNQ/exec';
+
         // Contact Form Submission Script
         function handleContactFormSubmit(event) {
             event.preventDefault();
@@ -2883,37 +2938,41 @@ LeetCode: <a href="https://leetcode.com/u/Poorvikkg/" target="_blank" style="col
             statusDiv.style.display = 'block';
             statusDiv.style.color = 'var(--text-gray)';
             statusDiv.innerHTML = 'Sending message...';
+
+            if (GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_SCRIPT_URL') {
+                statusDiv.style.color = '#ff5f56';
+                statusDiv.innerHTML = '❌ Contact form is not configured yet. Please configure the Apps Script URL.';
+                button.disabled = false;
+                button.style.opacity = '1';
+                button.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>';
+                return;
+            }
             
-            fetch('https://formspree.io/f/xoqgypzo', {
+            const urlParams = new URLSearchParams();
+            urlParams.append('name', name);
+            urlParams.append('email', email);
+            urlParams.append('message', message);
+            
+            fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
+                    'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                body: JSON.stringify({
-                    name: name,
-                    email: email,
-                    message: message
-                })
+                body: urlParams.toString(),
+                mode: 'no-cors'
             })
-            .then(response => {
-                if (response && response.ok) {
-                    statusDiv.style.color = '#27c93f';
-                    statusDiv.innerHTML = '✔ Message sent successfully! Thank you.';
-                    form.reset();
-                } else {
-                    statusDiv.style.color = '#ff5f56';
-                    statusDiv.innerHTML = '❌ Failed to send message. Please contact via email directly.';
-                }
+            .then(() => {
+                statusDiv.style.color = '#27c93f';
+                statusDiv.innerHTML = '✔ Message sent successfully! Thank you.';
+                form.reset();
                 button.disabled = false;
                 button.style.opacity = '1';
                 button.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>';
             })
-            .catch(() => {
-                // Fallback success simulation
-                statusDiv.style.color = '#27c93f';
-                statusDiv.innerHTML = '✔ Message sent successfully! Thank you.';
-                form.reset();
+            .catch(error => {
+                console.error('Submission error:', error);
+                statusDiv.style.color = '#ff5f56';
+                statusDiv.innerHTML = '❌ Failed to send message. Please contact via email directly.';
                 button.disabled = false;
                 button.style.opacity = '1';
                 button.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>';
