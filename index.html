@@ -4,12 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Poorvik Kuthyala's portfolio - Backend Developer & AIML Engineer. Discover my projects in software engineering, competitive programming, and AI/ML.">
+    <meta name="description"
+        content="Poorvik Kuthyala's portfolio - Backend Developer & AIML Engineer. Discover my projects in software engineering, competitive programming, and AI/ML.">
     <title>Poorvik | Backend Developer & AIML Engineer</title>
     <link rel="preload" as="image" href="poorvik_compressed.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         media="print" onload="this.media='all'">
@@ -1529,9 +1531,20 @@
         }
 
         @keyframes trigger-pulse-animation {
-            0% { border-color: var(--border-color); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6); }
-            50% { border-color: rgba(39, 201, 63, 0.7); box-shadow: 0 0 15px rgba(39, 201, 63, 0.3); }
-            100% { border-color: var(--border-color); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6); }
+            0% {
+                border-color: var(--border-color);
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            }
+
+            50% {
+                border-color: rgba(39, 201, 63, 0.7);
+                box-shadow: 0 0 15px rgba(39, 201, 63, 0.3);
+            }
+
+            100% {
+                border-color: var(--border-color);
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            }
         }
 
         .terminal-panel {
@@ -1581,10 +1594,21 @@
             border-radius: 50%;
             border: 1px solid var(--border-color);
         }
-        
-        .terminal-dot.red { background-color: #ff5f56; border-color: #e0443e; }
-        .terminal-dot.yellow { background-color: #ffbd2e; border-color: #dea123; }
-        .terminal-dot.green { background-color: #27c93f; border-color: #1aab29; }
+
+        .terminal-dot.red {
+            background-color: #ff5f56;
+            border-color: #e0443e;
+        }
+
+        .terminal-dot.yellow {
+            background-color: #ffbd2e;
+            border-color: #dea123;
+        }
+
+        .terminal-dot.green {
+            background-color: #27c93f;
+            border-color: #1aab29;
+        }
 
         .terminal-title {
             letter-spacing: 1px;
@@ -1608,9 +1632,21 @@
         }
 
         @keyframes pulse-green {
-            0% { transform: scale(0.9); opacity: 0.6; }
-            50% { transform: scale(1.1); opacity: 1; box-shadow: 0 0 12px #27c93f; }
-            100% { transform: scale(0.9); opacity: 0.6; }
+            0% {
+                transform: scale(0.9);
+                opacity: 0.6;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 1;
+                box-shadow: 0 0 12px #27c93f;
+            }
+
+            100% {
+                transform: scale(0.9);
+                opacity: 0.6;
+            }
         }
 
         .terminal-body {
@@ -1629,9 +1665,11 @@
         .terminal-body::-webkit-scrollbar {
             width: 6px;
         }
+
         .terminal-body::-webkit-scrollbar-track {
             background: #0d0d0d;
         }
+
         .terminal-body::-webkit-scrollbar-thumb {
             background: var(--border-color);
         }
@@ -1704,20 +1742,26 @@
                 width: 100%;
                 border-left: none;
             }
+
             .terminal-trigger {
                 bottom: 20px;
                 right: 20px;
             }
-            .terminal-prompt-input, .terminal-body {
+
+            .terminal-prompt-input,
+            .terminal-body {
                 font-size: 16px;
             }
+
             .terminal-close-mobile {
                 display: flex;
             }
+
             #contact-form {
                 padding: 20px !important;
                 margin: 20px auto !important;
             }
+
             #contact-form input,
             #contact-form textarea {
                 font-size: 16px !important;
@@ -1750,12 +1794,20 @@
             contain: layout style;
             touch-action: none;
         }
-        #splash-screen.fade-out { opacity: 0; pointer-events: none; }
-        #splash-screen.gone { display: none; }
+
+        #splash-screen.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        #splash-screen.gone {
+            display: none;
+        }
 
         .splash-wrap {
             width: 100%;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 0 20px;
@@ -1784,17 +1836,29 @@
         .splash-text.animate {
             opacity: 1;
             animation: sig-draw var(--draw-time, 3s) cubic-bezier(0.65, 0, 0.35, 1) forwards,
-                       sig-undraw var(--undraw-time, 1.5s) cubic-bezier(0.65, 0, 0.35, 1) forwards;
+                sig-undraw var(--undraw-time, 1.5s) cubic-bezier(0.65, 0, 0.35, 1) forwards;
             animation-delay: 0s, var(--undraw-delay, 3.2s);
         }
 
         @keyframes sig-draw {
-            from { stroke-dashoffset: var(--dash-len); }
-            to   { stroke-dashoffset: 0; }
+            from {
+                stroke-dashoffset: var(--dash-len);
+            }
+
+            to {
+                stroke-dashoffset: 0;
+            }
         }
+
         @keyframes sig-undraw {
-            from { stroke-dashoffset: 0; }
-            to   { stroke-dashoffset: var(--dash-len); opacity: 0; }
+            from {
+                stroke-dashoffset: 0;
+            }
+
+            to {
+                stroke-dashoffset: var(--dash-len);
+                opacity: 0;
+            }
         }
 
         /* Mobile: lighter rendering for smooth 60fps */
@@ -1804,18 +1868,30 @@
                 stroke-width: 1.5;
                 stroke-linejoin: miter;
             }
-            .splash-wrap { padding: 0 8px; }
-            #splash-svg { width: 96vw; }
+
+            .splash-wrap {
+                padding: 0 8px;
+            }
+
+            #splash-svg {
+                width: 96vw;
+            }
         }
+
         @media (max-width: 380px) {
-            .splash-text { font-size: 65px; }
+            .splash-text {
+                font-size: 65px;
+            }
         }
 
         body.splash-active {
             overflow: hidden;
             /* Hide everything behind splash to save GPU memory on mobile */
         }
-        body.splash-active #particles-canvas { visibility: hidden; }
+
+        body.splash-active #particles-canvas {
+            visibility: hidden;
+        }
     </style>
 </head>
 
@@ -1825,8 +1901,8 @@
     <div id="splash-screen">
         <div class="splash-wrap">
             <svg id="splash-svg" viewBox="0 0 900 160" xmlns="http://www.w3.org/2000/svg">
-                <text id="splash-text" class="splash-text" x="450" y="125"
-                    text-anchor="middle" dominant-baseline="auto">Poorvik Kuthyala</text>
+                <text id="splash-text" class="splash-text" x="450" y="125" text-anchor="middle"
+                    dominant-baseline="auto">Poorvik Kuthyala</text>
             </svg>
         </div>
     </div>
@@ -1984,7 +2060,8 @@
                     <div class="stat-label">LeetCode Contest Rating</div>
                 </a>
             </div>
-            <div style="display: flex; gap: 20px; justify-content: center; margin-top: 50px; max-width: 900px; flex-wrap: wrap;">
+            <div
+                style="display: flex; gap: 20px; justify-content: center; margin-top: 50px; max-width: 900px; flex-wrap: wrap;">
                 <a href="https://leetcode.com/u/Poorvikkg/" target="_blank" class="btn-outline"
                     style="display: flex; align-items: center; gap: 10px;">
                     <i class="fas fa-code"></i> LeetCode Profile
@@ -2295,30 +2372,55 @@
             <div class="education-grid">
 
                 <!-- Engineering -->
-                <div class="stat-card" style="display: flex; flex-direction: column; justify-content: flex-start; text-align: left; padding: 30px;">
-                    <div class="stat-label" style="font-size: 12px; border: 1px solid var(--border-color); padding: 4px 12px; display: inline-block; margin-bottom: 15px; width: fit-content;">2023 — 2027</div>
-                    <div class="stat-num" style="font-size: 18px; text-align: left; margin-bottom: 8px;">B.E. — AI & ML</div>
-                    <div class="stat-label" style="font-weight: 600; margin-bottom: 12px; color: var(--text-color);">St Joseph Enginnering Collge,Mangalore</div>
-                    <div class="stat-label" style="line-height: 1.6; font-size: 13px; margin-bottom: 15px;">Pursuing B.E. in AI &amp; ML with focus on deep learning, backend systems, and competitive programming.</div>
-                    <div class="stat-label" style="font-size: 13px; font-weight: 700; margin-top: auto; border-top: 1px solid var(--border-color); padding-top: 10px; color: var(--text-color);">CGPA: 8.46</div>
+                <div class="stat-card"
+                    style="display: flex; flex-direction: column; justify-content: flex-start; text-align: left; padding: 30px;">
+                    <div class="stat-label"
+                        style="font-size: 12px; border: 1px solid var(--border-color); padding: 4px 12px; display: inline-block; margin-bottom: 15px; width: fit-content;">
+                        2023 — 2027</div>
+                    <div class="stat-num" style="font-size: 18px; text-align: left; margin-bottom: 8px;">B.E. — AI & ML
+                    </div>
+                    <div class="stat-label" style="font-weight: 600; margin-bottom: 12px; color: var(--text-color);">St
+                        Joseph Enginnering Collge,Mangalore</div>
+                    <div class="stat-label" style="line-height: 1.6; font-size: 13px; margin-bottom: 15px;">Pursuing
+                        B.E. in AI &amp; ML with focus on deep learning, backend systems, and competitive programming.
+                    </div>
+                    <div class="stat-label"
+                        style="font-size: 13px; font-weight: 700; margin-top: auto; border-top: 1px solid var(--border-color); padding-top: 10px; color: var(--text-color);">
+                        CGPA: 8.46</div>
                 </div>
 
                 <!-- PUC -->
-                <div class="stat-card" style="display: flex; flex-direction: column; justify-content: flex-start; text-align: left; padding: 30px;">
-                    <div class="stat-label" style="font-size: 12px; border: 1px solid var(--border-color); padding: 4px 12px; display: inline-block; margin-bottom: 15px; width: fit-content;">2021 — 2023</div>
-                    <div class="stat-num" style="font-size: 18px; text-align: left; margin-bottom: 8px;">PUC — Science (PCMB)</div>
-                    <div class="stat-label" style="font-weight: 600; margin-bottom: 12px; color: var(--text-color);">St Philomena PU College,Puttur</div>
-                    <div class="stat-label" style="line-height: 1.6; font-size: 13px; margin-bottom: 15px;">Completed pre-university education with Physics, Chemistry, Mathematics, and Biology.</div>
-                    <div class="stat-label" style="font-size: 13px; font-weight: 700; margin-top: auto; border-top: 1px solid var(--border-color); padding-top: 10px; color: var(--text-color);">Percentage: 93%</div>
+                <div class="stat-card"
+                    style="display: flex; flex-direction: column; justify-content: flex-start; text-align: left; padding: 30px;">
+                    <div class="stat-label"
+                        style="font-size: 12px; border: 1px solid var(--border-color); padding: 4px 12px; display: inline-block; margin-bottom: 15px; width: fit-content;">
+                        2021 — 2023</div>
+                    <div class="stat-num" style="font-size: 18px; text-align: left; margin-bottom: 8px;">PUC — Science
+                        (PCMB)</div>
+                    <div class="stat-label" style="font-weight: 600; margin-bottom: 12px; color: var(--text-color);">St
+                        Philomena PU College,Puttur</div>
+                    <div class="stat-label" style="line-height: 1.6; font-size: 13px; margin-bottom: 15px;">Completed
+                        pre-university education with Physics, Chemistry, Mathematics, and Biology.</div>
+                    <div class="stat-label"
+                        style="font-size: 13px; font-weight: 700; margin-top: auto; border-top: 1px solid var(--border-color); padding-top: 10px; color: var(--text-color);">
+                        Percentage: 93%</div>
                 </div>
 
                 <!-- SSLC -->
-                <div class="stat-card" style="display: flex; flex-direction: column; justify-content: flex-start; text-align: left; padding: 30px;">
-                    <div class="stat-label" style="font-size: 12px; border: 1px solid var(--border-color); padding: 4px 12px; display: inline-block; margin-bottom: 15px; width: fit-content;">2021</div>
-                    <div class="stat-num" style="font-size: 18px; text-align: left; margin-bottom: 8px;">SSLC — Secondary School</div>
-                    <div class="stat-label" style="font-weight: 600; margin-bottom: 12px; color: var(--text-color);">St Kuriakose English Medium School,Sullia</div>
-                    <div class="stat-label" style="line-height: 1.6; font-size: 13px; margin-bottom: 15px;">Completed secondary school education with distinction.</div>
-                    <div class="stat-label" style="font-size: 13px; font-weight: 700; margin-top: auto; border-top: 1px solid var(--border-color); padding-top: 10px; color: var(--text-color);">Percentage: 86%</div>
+                <div class="stat-card"
+                    style="display: flex; flex-direction: column; justify-content: flex-start; text-align: left; padding: 30px;">
+                    <div class="stat-label"
+                        style="font-size: 12px; border: 1px solid var(--border-color); padding: 4px 12px; display: inline-block; margin-bottom: 15px; width: fit-content;">
+                        2021</div>
+                    <div class="stat-num" style="font-size: 18px; text-align: left; margin-bottom: 8px;">SSLC —
+                        Secondary School</div>
+                    <div class="stat-label" style="font-weight: 600; margin-bottom: 12px; color: var(--text-color);">St
+                        Kuriakose English Medium School,Sullia</div>
+                    <div class="stat-label" style="line-height: 1.6; font-size: 13px; margin-bottom: 15px;">Completed
+                        secondary school education with distinction.</div>
+                    <div class="stat-label"
+                        style="font-size: 13px; font-weight: 700; margin-top: auto; border-top: 1px solid var(--border-color); padding-top: 10px; color: var(--text-color);">
+                        Percentage: 86%</div>
                 </div>
 
             </div>
@@ -2346,24 +2448,38 @@
             </div>
 
             <!-- Professional Contact Form -->
-            <form id="contact-form" onsubmit="handleContactFormSubmit(event)" style="max-width: 500px; width: 100%; margin: 40px auto; padding: 30px; border: 1px solid var(--border-color); background: rgba(255, 255, 255, 0.02); text-align: left; position: relative; z-index: 2;">
-                <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">Send a Message</h3>
+            <form id="contact-form" onsubmit="handleContactFormSubmit(event)"
+                style="max-width: 500px; width: 100%; margin: 40px auto; padding: 30px; border: 1px solid var(--border-color); background: rgba(255, 255, 255, 0.02); text-align: left; position: relative; z-index: 2;">
+                <h3
+                    style="font-size: 18px; font-weight: 600; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">
+                    Send a Message</h3>
                 <div style="margin-bottom: 15px;">
-                    <label for="contact-name" style="display: block; font-size: 12px; color: var(--text-gray); margin-bottom: 6px; text-transform: uppercase;">Your Name</label>
-                    <input type="text" id="contact-name" name="name" required style="width: 100%; padding: 12px; border: 1px solid var(--border-color); background: #080808; color: var(--text-color); font-family: 'Space Mono', monospace; font-size: 14px; outline: none; transition: border-color 0.3s ease;">
+                    <label for="contact-name"
+                        style="display: block; font-size: 12px; color: var(--text-gray); margin-bottom: 6px; text-transform: uppercase;">Your
+                        Name</label>
+                    <input type="text" id="contact-name" name="name" required
+                        style="width: 100%; padding: 12px; border: 1px solid var(--border-color); background: #080808; color: var(--text-color); font-family: 'Space Mono', monospace; font-size: 14px; outline: none; transition: border-color 0.3s ease;">
                 </div>
                 <div style="margin-bottom: 15px;">
-                    <label for="contact-email" style="display: block; font-size: 12px; color: var(--text-gray); margin-bottom: 6px; text-transform: uppercase;">Your Email</label>
-                    <input type="email" id="contact-email" name="email" required style="width: 100%; padding: 12px; border: 1px solid var(--border-color); background: #080808; color: var(--text-color); font-family: 'Space Mono', monospace; font-size: 14px; outline: none; transition: border-color 0.3s ease;">
+                    <label for="contact-email"
+                        style="display: block; font-size: 12px; color: var(--text-gray); margin-bottom: 6px; text-transform: uppercase;">Your
+                        Email</label>
+                    <input type="email" id="contact-email" name="email" required
+                        style="width: 100%; padding: 12px; border: 1px solid var(--border-color); background: #080808; color: var(--text-color); font-family: 'Space Mono', monospace; font-size: 14px; outline: none; transition: border-color 0.3s ease;">
                 </div>
                 <div style="margin-bottom: 25px;">
-                    <label for="contact-message" style="display: block; font-size: 12px; color: var(--text-gray); margin-bottom: 6px; text-transform: uppercase;">Message</label>
-                    <textarea id="contact-message" name="message" required rows="4" style="width: 100%; padding: 12px; border: 1px solid var(--border-color); background: #080808; color: var(--text-color); font-family: 'Space Mono', monospace; font-size: 14px; outline: none; resize: vertical; transition: border-color 0.3s ease;"></textarea>
+                    <label for="contact-message"
+                        style="display: block; font-size: 12px; color: var(--text-gray); margin-bottom: 6px; text-transform: uppercase;">Message</label>
+                    <textarea id="contact-message" name="message" required rows="4"
+                        style="width: 100%; padding: 12px; border: 1px solid var(--border-color); background: #080808; color: var(--text-color); font-family: 'Space Mono', monospace; font-size: 14px; outline: none; resize: vertical; transition: border-color 0.3s ease;"></textarea>
                 </div>
-                <button type="submit" class="btn-outline" style="width: 100%; padding: 15px; font-weight: bold; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                <button type="submit" class="btn-outline"
+                    style="width: 100%; padding: 15px; font-weight: bold; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 8px;">
                     Send Message <i class="fas fa-paper-plane"></i>
                 </button>
-                <div id="contact-form-status" style="margin-top: 15px; font-family: 'Space Mono', monospace; font-size: 13px; line-height: 1.5; display: none;"></div>
+                <div id="contact-form-status"
+                    style="margin-top: 15px; font-family: 'Space Mono', monospace; font-size: 13px; line-height: 1.5; display: none;">
+                </div>
             </form>
 
             <div class="cta-links">
@@ -2393,7 +2509,8 @@
     </main>
 
     <!-- Floating Terminal Trigger Button -->
-    <div class="terminal-trigger pulse" id="terminal-trigger" onclick="toggleTerminalPanel()" title="Interactive Shell (Press `)">
+    <div class="terminal-trigger pulse" id="terminal-trigger" onclick="toggleTerminalPanel()"
+        title="Interactive Shell (Press `)">
         <i class="fas fa-terminal"></i>
         <span class="terminal-trigger-text">SHELL</span>
     </div>
@@ -2402,7 +2519,8 @@
     <div class="terminal-panel" id="terminal-panel">
         <div class="terminal-header">
             <div class="terminal-dots">
-                <div class="terminal-dot red" onclick="toggleTerminalPanel()" style="cursor: pointer;" title="Close"></div>
+                <div class="terminal-dot red" onclick="toggleTerminalPanel()" style="cursor: pointer;" title="Close">
+                </div>
                 <div class="terminal-dot yellow"></div>
                 <div class="terminal-dot green"></div>
             </div>
@@ -2412,23 +2530,28 @@
                     <span class="status-dot"></span>
                     <span>ONLINE</span>
                 </div>
-                <div class="terminal-close-mobile" onclick="toggleTerminalPanel()" title="Close Terminal"><i class="fas fa-times"></i></div>
+                <div class="terminal-close-mobile" onclick="toggleTerminalPanel()" title="Close Terminal"><i
+                        class="fas fa-times"></i></div>
             </div>
         </div>
         <div class="terminal-body" id="terminal-body">
-            <pre style="color: #27c93f; font-weight: bold; margin: 0 0 15px 0; line-height: 1.15; font-family: 'Space Mono', monospace; font-size: 10px; white-space: pre; overflow-x: auto; user-select: none;"> ____   ___   ___  ____ __     __ ___ _  __
+            <pre
+                style="color: #27c93f; font-weight: bold; margin: 0 0 15px 0; line-height: 1.15; font-family: 'Space Mono', monospace; font-size: 10px; white-space: pre; overflow-x: auto; user-select: none;"> ____   ___   ___  ____ __     __ ___ _  __
 |  _ \ / _ \ / _ \|  _ \ \   / /|_ _| |/ /
 | |_) | | | | | | | |_) \ \ / /  | || ' / 
 |  __/| |_| | |_| |  _ < \ V /   | || . \ 
 |_|    \___/ \___/|_| \_\ \_/   |___|_|\_\</pre>
             <div class="terminal-line terminal-output-dim">Welcome to Poorvik's Interactive Shell v2.2.0.</div>
-            <div class="terminal-line">Type <span class="terminal-output-success">help</span> for commands, press <span class="terminal-output-accent">Tab</span> to autocomplete, or <span class="terminal-output-accent">`</span> to close.</div>
-            
+            <div class="terminal-line">Type <span class="terminal-output-success">help</span> for commands, press <span
+                    class="terminal-output-accent">Tab</span> to autocomplete, or <span
+                    class="terminal-output-accent">`</span> to close.</div>
+
             <div id="terminal-history"></div>
 
             <div class="terminal-prompt-line">
                 <span class="terminal-prompt-prefix">guest@poorvik:~$</span>
-                <input type="text" id="terminal-input" class="terminal-prompt-input" autocomplete="off" spellcheck="false">
+                <input type="text" id="terminal-input" class="terminal-prompt-input" autocomplete="off"
+                    spellcheck="false">
             </div>
         </div>
     </div>
@@ -2529,46 +2652,46 @@
 
         function animateCounters() {
             const counters = document.querySelectorAll('#dsa .stat-num[data-target]');
-            
+
             counters.forEach(counter => {
                 const target = parseInt(counter.getAttribute('data-target'), 10);
                 const prefix = counter.getAttribute('data-prefix') || '';
                 const suffix = counter.getAttribute('data-suffix') || '';
-                
+
                 // For rank, count down from 100 to target (1)
                 const isRank = prefix === '#';
                 const startVal = isRank ? 100 : 0;
-                
+
                 let startTime = null;
                 const duration = 1500; // 1.5 seconds for snappy, satisfying animation
-                
+
                 // Set initial start value
                 counter.textContent = `${prefix}${startVal}${suffix}`;
-                
+
                 function updateCounter(timestamp) {
                     if (!startTime) startTime = timestamp;
                     const progress = timestamp - startTime;
                     const percentage = Math.min(progress / duration, 1);
-                    
+
                     // Ease out cubic for a premium decelerating feel
                     const easeProgress = 1 - Math.pow(1 - percentage, 3);
-                    
+
                     let currentVal;
                     if (isRank) {
                         currentVal = Math.round(startVal - (easeProgress * (startVal - target)));
                     } else {
                         currentVal = Math.round(easeProgress * target);
                     }
-                    
+
                     counter.textContent = `${prefix}${currentVal}${suffix}`;
-                    
+
                     if (percentage < 1) {
                         requestAnimationFrame(updateCounter);
                     } else {
                         counter.textContent = `${prefix}${target}${suffix}`;
                     }
                 }
-                
+
                 requestAnimationFrame(updateCounter);
             });
         }
@@ -2753,12 +2876,12 @@
         const terminalHistory = document.getElementById('terminal-history');
         const terminalBody = document.getElementById('terminal-body');
         const shellStartTime = Date.now();
-        
+
         let cmdHistory = [];
         let cmdHistoryIndex = -1;
 
         const availableCommands = [
-            'help', 'about', 'skills', 'experience', 'projects', 'education', 
+            'help', 'about', 'skills', 'experience', 'projects', 'education',
             'contact', 'neofetch', 'clear', 'resume', 'exit'
         ];
 
@@ -2798,7 +2921,7 @@
                 }
             });
 
-            terminalInput.addEventListener('keydown', function(e) {
+            terminalInput.addEventListener('keydown', function (e) {
                 // Ctrl + L to clear screen
                 if (e.key === 'l' && e.ctrlKey) {
                     e.preventDefault();
@@ -2811,7 +2934,7 @@
                     e.preventDefault();
                     const val = this.value.trim().toLowerCase();
                     if (!val) return;
-                    
+
                     const parts = val.split(/\s+/);
                     if (parts.length === 1) {
                         const matches = availableCommands.filter(c => c.startsWith(parts[0]));
@@ -2822,12 +2945,12 @@
                             line.className = 'terminal-prompt-line';
                             line.innerHTML = `<span class="terminal-prompt-prefix">guest@poorvik:~$</span> <span class="terminal-output-accent">${escapeHtml(this.value)}</span>`;
                             terminalHistory.appendChild(line);
-                            
+
                             const matchLine = document.createElement('div');
                             matchLine.className = 'terminal-line terminal-output-dim';
                             matchLine.textContent = matches.join('    ');
                             terminalHistory.appendChild(matchLine);
-                            
+
                             terminalBody.scrollTop = terminalBody.scrollHeight;
                         }
                     }
@@ -2837,18 +2960,18 @@
                 if (e.key === 'Enter') {
                     const commandLine = this.value;
                     const command = commandLine.trim();
-                    
+
                     if (command !== '') {
                         cmdHistory.push(commandLine);
                         cmdHistoryIndex = cmdHistory.length;
                     }
-                    
+
                     // Print prompt and typed command
                     const line = document.createElement('div');
                     line.className = 'terminal-prompt-line';
                     line.innerHTML = `<span class="terminal-prompt-prefix">guest@poorvik:~$</span> <span class="terminal-output-accent">${escapeHtml(commandLine)}</span>`;
                     terminalHistory.appendChild(line);
-                    
+
                     // Process Command
                     const response = processCommand(command.toLowerCase());
                     if (response) {
@@ -2857,7 +2980,7 @@
                         respLine.innerHTML = response;
                         terminalHistory.appendChild(respLine);
                     }
-                    
+
                     this.value = '';
                     terminalBody.scrollTop = terminalBody.scrollHeight;
                 } else if (e.key === 'ArrowUp') {
@@ -2887,7 +3010,7 @@
             if (!cmd) return '';
             const parts = cmd.split(/\s+/);
             const baseCmd = parts[0];
-            
+
             switch (baseCmd) {
                 case 'help':
                     return `Available commands:
@@ -2901,16 +3024,16 @@
   <span class="terminal-output-success">clear</span>      - Clear screen
   <span class="terminal-output-success">resume</span>     - Download PDF Resume
   <span class="terminal-output-success">exit</span>       - Close terminal panel`;
-                    
+
                 case 'about':
                     return `I'm an AIML undergraduate student with a passion for software engineering, building scalable backends, training intelligent models, and solving complex algorithmic challenges. I value discipline, consistency, and clarity in code.`;
-                    
+
                 case 'skills':
                     return `<span class="terminal-output-accent">LANGUAGES:</span> C++, Java, Python, JavaScript, SQL
 <span class="terminal-output-accent">DATABASES:</span> MySQL, PostgreSQL, MongoDB, Redis, FAISS
 <span class="terminal-output-accent">FRAMEWORKS:</span> Node.js, Express.js, Spring Boot, React, Next.js
 <span class="terminal-output-accent">TOOLS & DEVOPS:</span> Git, Docker, Kubernetes, Linux, Postman`;
-                    
+
                 case 'experience':
                     return `<span class="terminal-output-accent">1. Backend Intern @ ITJOBXS (Feb 2026 - May 2026)</span>
    - Engineered Java/MySQL backend modules, boosting throughput by 35%.
@@ -2922,7 +3045,7 @@
 
 <span class="terminal-output-accent">3. Backend Developer @ Nucleus Technical Club (Jan 2026 - Mar 2026)</span>
    - Managed official tech club website backends, supporting 5000+ users.`;
-                    
+
                 case 'projects':
                     return `<span class="terminal-output-accent">1. Medicare (AI Project)</span>
    - Voice-guided, accessible medicine reminder with Tesseract.js OCR verification.
@@ -2935,7 +3058,7 @@
    
 <span class="terminal-output-accent">4. Hostel Laundry Management (Web Project)</span>
    - Full stack administrative tracking system.`;
-                    
+
                 case 'education':
                     return `<span class="terminal-output-accent">St Joseph Engineering College, Mangalore</span>
   - B.E. — AI & ML (2023 - 2027) | <span class="terminal-output-success">CGPA: 8.46</span>
@@ -2945,7 +3068,7 @@
 
 <span class="terminal-output-accent">St Kuriakose English Medium School, Sullia</span>
   - SSLC — Secondary School (2021) | <span class="terminal-output-success">Percentage: 86%</span>`;
-                    
+
                 case 'contact':
                 case 'socials':
                     return `Email: <a href="mailto:poorvik935@gmail.com" target="_blank" style="color: var(--text-color);">poorvik935@gmail.com</a>
@@ -2953,7 +3076,7 @@ Phone: +91 88670 70511
 LinkedIn: <a href="https://www.linkedin.com/in/poorvik-kuthyala/" target="_blank" style="color: var(--text-color);">poorvik-kuthyala</a>
 GitHub: <a href="https://github.com/poorvikkg" target="_blank" style="color: var(--text-color);">poorvikkg</a>
 LeetCode: <a href="https://leetcode.com/u/Poorvikkg/" target="_blank" style="color: var(--text-color);">Poorvikkg</a>`;
-                    
+
                 case 'neofetch':
                 case 'sysinfo': {
                     const uptimeSecs = Math.floor((Date.now() - shellStartTime) / 1000);
@@ -2966,7 +3089,7 @@ LeetCode: <a href="https://leetcode.com/u/Poorvikkg/" target="_blank" style="col
                         uptimeStr = `${mins}m ${secs}s`;
                     }
                     const res = `${window.screen.width}x${window.screen.height}`;
-                    
+
                     return `
 <div style="display: flex; gap: 20px; font-family: 'Space Mono', monospace; font-size: 13px; line-height: 1.35; flex-wrap: wrap;">
 <pre style="color: #27c93f; margin: 0; font-family: 'Space Mono', monospace; font-weight: bold;">
@@ -2999,15 +3122,15 @@ LeetCode: <a href="https://leetcode.com/u/Poorvikkg/" target="_blank" style="col
                 case 'clear':
                     terminalHistory.innerHTML = '';
                     return '';
-                    
+
                 case 'exit':
                     toggleTerminalPanel();
                     return 'Closing terminal connection...';
-                    
+
                 case 'resume':
                     window.open('poorvikResumeMain.pdf', '_blank');
                     return '<span class="terminal-output-success">Opening resume (poorvikResumeMain.pdf) in a new tab...</span>';
-                    
+
                 default:
                     return `<span class="terminal-output-error">Command not found: ${escapeHtml(baseCmd)}. Type 'help' for a list of commands.</span>`;
             }
@@ -3022,15 +3145,15 @@ LeetCode: <a href="https://leetcode.com/u/Poorvikkg/" target="_blank" style="col
             const form = event.target;
             const button = form.querySelector('button');
             const statusDiv = document.getElementById('contact-form-status');
-            
+
             const name = document.getElementById('contact-name').value;
             const email = document.getElementById('contact-email').value;
             const message = document.getElementById('contact-message').value;
-            
+
             button.disabled = true;
             button.style.opacity = '0.5';
             button.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
-            
+
             statusDiv.style.display = 'block';
             statusDiv.style.color = 'var(--text-gray)';
             statusDiv.innerHTML = 'Sending message...';
@@ -3043,12 +3166,12 @@ LeetCode: <a href="https://leetcode.com/u/Poorvikkg/" target="_blank" style="col
                 button.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>';
                 return;
             }
-            
+
             const urlParams = new URLSearchParams();
             urlParams.append('name', name);
             urlParams.append('email', email);
             urlParams.append('message', message);
-            
+
             fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
                 headers: {
@@ -3057,22 +3180,22 @@ LeetCode: <a href="https://leetcode.com/u/Poorvikkg/" target="_blank" style="col
                 body: urlParams.toString(),
                 mode: 'no-cors'
             })
-            .then(() => {
-                statusDiv.style.color = '#27c93f';
-                statusDiv.innerHTML = '✔ Message sent successfully! Thank you.';
-                form.reset();
-                button.disabled = false;
-                button.style.opacity = '1';
-                button.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>';
-            })
-            .catch(error => {
-                console.error('Submission error:', error);
-                statusDiv.style.color = '#ff5f56';
-                statusDiv.innerHTML = '❌ Failed to send message. Please contact via email directly.';
-                button.disabled = false;
-                button.style.opacity = '1';
-                button.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>';
-            });
+                .then(() => {
+                    statusDiv.style.color = '#27c93f';
+                    statusDiv.innerHTML = '✔ Message sent successfully! Thank you.';
+                    form.reset();
+                    button.disabled = false;
+                    button.style.opacity = '1';
+                    button.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>';
+                })
+                .catch(error => {
+                    console.error('Submission error:', error);
+                    statusDiv.style.color = '#ff5f56';
+                    statusDiv.innerHTML = '❌ Failed to send message. Please contact via email directly.';
+                    button.disabled = false;
+                    button.style.opacity = '1';
+                    button.innerHTML = 'Send Message <i class="fas fa-paper-plane"></i>';
+                });
         }
 
         // Start typewriter effect after initial delay
@@ -3081,19 +3204,19 @@ LeetCode: <a href="https://leetcode.com/u/Poorvikkg/" target="_blank" style="col
         // ============================================================
         //  SPLASH — Measure text, set CSS vars, let CSS do the rest
         // ============================================================
-        (function() {
+        (function () {
             const splash = document.getElementById('splash-screen');
             const txt = document.getElementById('splash-text');
             if (!splash || !txt) return;
 
-            const DRAW = 4.0;     // seconds
+            const DRAW = 1.5;     // seconds
             const HOLD = 0;     // seconds between draw end and undraw start
             const UNDRAW = 1.0;   // seconds
             const FADE = 800;    // ms for black screen fade
 
             async function init() {
                 // Wait for font
-                try { await document.fonts.load('120px "Great Vibes"'); } catch(e) {}
+                try { await document.fonts.load('120px "Great Vibes"'); } catch (e) { }
 
                 // Measure stroke length
                 const len = Math.max(txt.getComputedTextLength() * 3.5, 8000);
@@ -3125,4 +3248,5 @@ LeetCode: <a href="https://leetcode.com/u/Poorvikkg/" target="_blank" style="col
         })();
     </script>
 </body>
+
 </html>
