@@ -9,7 +9,7 @@
     <link rel="preload" as="image" href="poorvik_compressed.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         media="print" onload="this.media='all'">
@@ -1730,10 +1730,106 @@
             border-color: var(--text-color) !important;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
         }
+
+        /* ============================================================
+           SPLASH SCREEN — Pure CSS Animated Signature
+        ============================================================ */
+        #splash-screen {
+            position: fixed;
+            inset: 0;
+            background: #000;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+            will-change: opacity;
+            transition: opacity 1.2s ease;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            contain: layout style;
+            touch-action: none;
+        }
+        #splash-screen.fade-out { opacity: 0; pointer-events: none; }
+        #splash-screen.gone { display: none; }
+
+        .splash-wrap {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 20px;
+        }
+
+        #splash-svg {
+            width: min(850px, 92vw);
+            height: auto;
+            overflow: visible;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+        }
+
+        .splash-text {
+            fill: none;
+            stroke: #fff;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-width: 2;
+            font-family: 'Great Vibes', cursive;
+            font-size: 120px;
+            opacity: 0;
+            will-change: stroke-dashoffset, opacity;
+        }
+
+        .splash-text.animate {
+            opacity: 1;
+            animation: sig-draw var(--draw-time, 3s) cubic-bezier(0.65, 0, 0.35, 1) forwards,
+                       sig-undraw var(--undraw-time, 1.5s) cubic-bezier(0.65, 0, 0.35, 1) forwards;
+            animation-delay: 0s, var(--undraw-delay, 3.2s);
+        }
+
+        @keyframes sig-draw {
+            from { stroke-dashoffset: var(--dash-len); }
+            to   { stroke-dashoffset: 0; }
+        }
+        @keyframes sig-undraw {
+            from { stroke-dashoffset: 0; }
+            to   { stroke-dashoffset: var(--dash-len); opacity: 0; }
+        }
+
+        /* Mobile: lighter rendering for smooth 60fps */
+        @media (max-width: 600px) {
+            .splash-text {
+                font-size: 80px;
+                stroke-width: 1.5;
+                stroke-linejoin: miter;
+            }
+            .splash-wrap { padding: 0 8px; }
+            #splash-svg { width: 96vw; }
+        }
+        @media (max-width: 380px) {
+            .splash-text { font-size: 65px; }
+        }
+
+        body.splash-active {
+            overflow: hidden;
+            /* Hide everything behind splash to save GPU memory on mobile */
+        }
+        body.splash-active #particles-canvas { visibility: hidden; }
     </style>
 </head>
 
-<body>
+<body class="splash-active">
+
+    <!-- Splash Screen -->
+    <div id="splash-screen">
+        <div class="splash-wrap">
+            <svg id="splash-svg" viewBox="0 0 900 160" xmlns="http://www.w3.org/2000/svg">
+                <text id="splash-text" class="splash-text" x="450" y="125"
+                    text-anchor="middle" dominant-baseline="auto">Poorvik Kuthyala</text>
+            </svg>
+        </div>
+    </div>
 
     <!-- Particles Background -->
     <canvas class="particles" id="particles-canvas"></canvas>
@@ -2981,6 +3077,52 @@ LeetCode: <a href="https://leetcode.com/u/Poorvikkg/" target="_blank" style="col
 
         // Start typewriter effect after initial delay
         setTimeout(type, delayBetweenWords);
+
+        // ============================================================
+        //  SPLASH — Measure text, set CSS vars, let CSS do the rest
+        // ============================================================
+        (function() {
+            const splash = document.getElementById('splash-screen');
+            const txt = document.getElementById('splash-text');
+            if (!splash || !txt) return;
+
+            const DRAW = 4.0;     // seconds
+            const HOLD = 0.1;     // seconds between draw end and undraw start
+            const UNDRAW = 1.2;   // seconds
+            const FADE = 1200;    // ms for black screen fade
+
+            async function init() {
+                // Wait for font
+                try { await document.fonts.load('120px "Great Vibes"'); } catch(e) {}
+
+                // Measure stroke length
+                const len = Math.max(txt.getComputedTextLength() * 3.5, 8000);
+
+                // Set CSS custom properties — CSS animations handle the rest
+                txt.style.setProperty('--dash-len', len);
+                txt.style.strokeDasharray = len;
+                txt.style.strokeDashoffset = len;
+                txt.style.setProperty('--draw-time', DRAW + 's');
+                txt.style.setProperty('--undraw-time', UNDRAW + 's');
+                txt.style.setProperty('--undraw-delay', (DRAW + HOLD) + 's');
+
+                // Kick off pure CSS animation
+                txt.classList.add('animate');
+
+                // Dismiss after full sequence
+                const totalMs = (DRAW + HOLD + UNDRAW + 0.3) * 1000;
+                setTimeout(() => {
+                    splash.classList.add('fade-out');
+                    setTimeout(() => {
+                        document.body.classList.remove('splash-active');
+                        window.scrollTo({ top: 0 });
+                        splash.classList.add('gone');
+                    }, FADE + 100);
+                }, totalMs);
+            }
+
+            init();
+        })();
     </script>
 </body>
 </html>
