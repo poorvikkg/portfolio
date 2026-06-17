@@ -1892,6 +1892,146 @@
         body.splash-active #particles-canvas {
             visibility: hidden;
         }
+
+        /* ── Live Projects Section ────────────────────────────── */
+        #live {
+            position: relative;
+            min-height: auto;
+        }
+
+        .live-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .live-card {
+            border: 1px solid var(--border-color);
+            padding: 40px 30px;
+            background: rgba(255, 255, 255, 0.02);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 20px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .live-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .live-card-icon {
+            width: 55px;
+            height: 55px;
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: var(--text-gray);
+            transition: all 0.3s ease;
+        }
+
+        .live-card:hover .live-card-icon {
+            border-color: var(--text-color);
+            color: var(--text-color);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+        }
+
+        .live-card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .live-dot {
+            width: 7px;
+            height: 7px;
+            background: var(--text-color);
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+            animation: live-pulse 1.5s infinite;
+            display: inline-block;
+        }
+
+        @keyframes live-pulse {
+            0% {
+                transform: scale(0.9);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+                box-shadow: 0 0 12px rgba(255, 255, 255, 0.8);
+            }
+
+            100% {
+                transform: scale(0.9);
+                opacity: 0.5;
+            }
+        }
+
+        .live-card-footer {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: var(--text-gray);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: auto;
+        }
+
+        .live-card:hover .live-card-footer {
+            color: var(--text-color);
+        }
+
+        @media (max-width: 1200px) {
+            .live-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .live-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .live-card {
+                padding: 30px 20px;
+            }
+
+            .live-card-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 18px;
+            }
+
+            .live-card-title {
+                font-size: 16px;
+            }
+
+            .live-card-footer {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .live-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+        }
     </style>
 </head>
 
@@ -1931,6 +2071,7 @@
             <a href="#dev">Development</a>
             <a href="#leadership">Leadership</a>
             <a href="#projects">Projects</a>
+            <a href="#live">Live</a>
             <a href="#education">Education</a>
             <a href="#contact">Contact</a>
         </div>
@@ -2035,7 +2176,22 @@
         <!-- Section 03: DSA -->
         <section id="dsa" data-num="O(n)">
             <div class="section-label">PROBLEM SOLVING</div>
-            <h2 class="section-title">Data Structures & Algorithms</h2>
+            <h2 class="section-title" style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">Data
+                Structures & Algorithms
+                <span style="display: inline-flex; gap: 10px;">
+                    <a href="https://takeuforward.org/verify-certificate?id=-g2x9f7K" target="_blank"
+                        style="font-size: 11px; color: var(--text-gray); text-decoration: none; display: inline-flex; align-items: center; gap: 5px; transition: color 0.3s ease; letter-spacing: 1px; border: 1px solid var(--border-color); padding: 4px 10px;"
+                        onmouseover="this.style.color='var(--text-color)';this.style.borderColor='var(--text-color)'"
+                        onmouseout="this.style.color='var(--text-gray)';this.style.borderColor='var(--border-color)'"><i
+                            class="fas fa-certificate"></i> TUF</a>
+                    <a href="https://www.geeksforgeeks.org/certificate/488023270d7f44704cf064657b0a9ea3?utm_source=socials&utm_medium=cc_link"
+                        target="_blank"
+                        style="font-size: 11px; color: var(--text-gray); text-decoration: none; display: inline-flex; align-items: center; gap: 5px; transition: color 0.3s ease; letter-spacing: 1px; border: 1px solid var(--border-color); padding: 4px 10px;"
+                        onmouseover="this.style.color='var(--text-color)';this.style.borderColor='var(--text-color)'"
+                        onmouseout="this.style.color='var(--text-gray)';this.style.borderColor='var(--border-color)'"><i
+                            class="fas fa-certificate"></i> GFG</a>
+                </span>
+            </h2>
             <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 20px;">
                 <a href="https://leetcode.com/u/Poorvikkg/" target="_blank" class="stat-card">
                     <div class="stat-num" data-target="2000" data-suffix="+">2000+</div>
@@ -2121,7 +2277,14 @@
                 </div>
 
                 <div class="skills-category">
-                    <div class="skills-category-title">Tools & DevOps</div>
+                    <div class="skills-category-title" style="display: flex; align-items: center; gap: 12px;">Tools &
+                        DevOps <a
+                            href="https://www.geeksforgeeks.org/certificate/488023270d7f44704cf064657b0a9ea3?utm_source=socials&utm_medium=cc_link"
+                            target="_blank"
+                            style="font-size: 11px; color: var(--text-gray); text-decoration: none; display: inline-flex; align-items: center; gap: 5px; transition: color 0.3s ease; letter-spacing: 1px;"
+                            onmouseover="this.style.color='var(--text-color)'"
+                            onmouseout="this.style.color='var(--text-gray)'"><i class="fas fa-certificate"></i> View</a>
+                    </div>
                     <div class="skills-pills">
                         <span class="skill-pill"><i class="fab fa-git-alt"></i> Git</span>
                         <span class="skill-pill"><i class="fab fa-github"></i> GitHub</span>
@@ -2132,12 +2295,45 @@
                 </div>
 
                 <div class="skills-category">
-                    <div class="skills-category-title">Core Concepts</div>
+                    <div class="skills-category-title" style="display: flex; align-items: center; gap: 12px;">Core
+                        Concepts <a href="https://takeuforward.org/verify-certificate?id=-g2x9f7K" target="_blank"
+                            style="font-size: 11px; color: var(--text-gray); text-decoration: none; display: inline-flex; align-items: center; gap: 5px; transition: color 0.3s ease; letter-spacing: 1px;"
+                            onmouseover="this.style.color='var(--text-color)'"
+                            onmouseout="this.style.color='var(--text-gray)'"><i class="fas fa-certificate"></i> View</a>
+                    </div>
                     <div class="skills-pills">
                         <span class="skill-pill"><i class="fas fa-cubes"></i> OOP</span>
                         <span class="skill-pill"><i class="fas fa-database"></i> DBMS</span>
                         <span class="skill-pill"><i class="fas fa-microchip"></i> OS</span>
                         <span class="skill-pill"><i class="fas fa-network-wired"></i> Networks</span>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <div class="skills-category-title" style="display: flex; align-items: center; gap: 12px;">System
+                        Design <a
+                            href="https://www.linkedin.com/posts/poorvik-kuthyala_lld-designpatterns-systemdesign-activity-7440465380512362496-Zf8e?utm_source=share&utm_medium=member_desktop"
+                            target="_blank"
+                            style="font-size: 11px; color: var(--text-gray); text-decoration: none; display: inline-flex; align-items: center; gap: 5px; transition: color 0.3s ease; letter-spacing: 1px;"
+                            onmouseover="this.style.color='var(--text-color)'"
+                            onmouseout="this.style.color='var(--text-gray)'"><i class="fab fa-linkedin"></i> View</a>
+                    </div>
+                    <div class="skills-pills">
+                        <span class="skill-pill highlight"><i class="fas fa-sitemap"></i> HLD / LLD</span>
+                        <span class="skill-pill"><i class="fas fa-exchange-alt"></i> REST APIs</span>
+                        <span class="skill-pill"><i class="fas fa-database"></i> Database Design</span>
+                        <span class="skill-pill"><i class="fas fa-expand-arrows-alt"></i> Scalability</span>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <div class="skills-category-title">AI / Machine Learning</div>
+                    <div class="skills-pills">
+                        <span class="skill-pill highlight"><i class="fas fa-brain"></i> Deep Learning</span>
+                        <span class="skill-pill"><i class="fas fa-eye"></i> Computer Vision</span>
+                        <span class="skill-pill"><i class="fas fa-robot"></i> NLP</span>
+                        <span class="skill-pill"><i class="fas fa-project-diagram"></i> RAG</span>
+                        <span class="skill-pill"><i class="fas fa-image"></i> Digital Image Processing</span>
                     </div>
                 </div>
             </div>
@@ -2147,36 +2343,46 @@
         <section id="leadership" data-num="O(n²)">
             <div class="section-label">ACHIEVEMENTS</div>
             <h2 class="section-title">Leadership & Awards</h2>
+            <p
+                style="color: var(--text-gray); font-size: 12px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 30px;">
+                <i class="fas fa-mouse-pointer" style="margin-right: 6px;"></i> Click on any card to verify</p>
             <div
                 style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 900px;">
-                <div class="stat-card" style="display: flex; flex-direction: column; justify-content: center;">
+                <a href="https://www.linkedin.com/posts/poorvik-kuthyala_nucleussjec-geeksforgeeks-ai-ugcPost-7438207865586270208-xdyE/?utm_source=share&utm_medium=member_desktop"
+                    target="_blank" class="stat-card"
+                    style="display: flex; flex-direction: column; justify-content: center; text-decoration: none; cursor: pointer;">
                     <div class="stat-num" style="font-size: 22px;">Founder & President</div>
                     <div class="stat-label" style="font-weight: 600; margin-bottom: 15px; color: var(--text-color);">
                         College Technical Club</div>
                     <div class="stat-label" style="line-height: 1.5; font-size: 13px;">Organized coding events to foster
                         a strong developer community on campus.</div>
-                </div>
-                <div class="stat-card" style="display: flex; flex-direction: column; justify-content: center;">
+                </a>
+                <a href="https://www.linkedin.com/posts/poorvik-kuthyala_geeksforgeeks-campusmantri-leadership-share-7419045158551412736--Nku/?utm_source=share&utm_medium=member_desktop"
+                    target="_blank" class="stat-card"
+                    style="display: flex; flex-direction: column; justify-content: center; text-decoration: none; cursor: pointer;">
                     <div class="stat-num" style="font-size: 22px;">Campus Representative</div>
                     <div class="stat-label" style="font-weight: 600; margin-bottom: 15px; color: var(--text-color);">
                         GeeksforGeeks</div>
                     <div class="stat-label" style="line-height: 1.5; font-size: 13px;">Conducted technical seminars and
                         actively promoted DSA resources to the student body.</div>
-                </div>
-                <div class="stat-card" style="display: flex; flex-direction: column; justify-content: center;">
+                </a>
+                <a href="https://www.geeksforgeeks.org/profile/poorvikkg?tab=overview" target="_blank" class="stat-card"
+                    style="display: flex; flex-direction: column; justify-content: center; text-decoration: none; cursor: pointer;">
                     <div class="stat-num" style="font-size: 22px;">Rank #1</div>
                     <div class="stat-label" style="font-weight: 600; margin-bottom: 15px; color: var(--text-color);">
                         Campus DSA</div>
                     <div class="stat-label" style="line-height: 1.5; font-size: 13px;">Secured the top position across
                         the entire campus in Data Structures & Algorithms.</div>
-                </div>
-                <div class="stat-card" style="display: flex; flex-direction: column; justify-content: center;">
+                </a>
+                <a href="https://www.linkedin.com/posts/poorvik-kuthyala_thrilled-to-share-an-achievement-our-activity-7400552519090917376-udsJ?utm_source=share&utm_medium=member_desktop"
+                    target="_blank" class="stat-card"
+                    style="display: flex; flex-direction: column; justify-content: center; text-decoration: none; cursor: pointer;">
                     <div class="stat-num" style="font-size: 22px;">Award Winner</div>
                     <div class="stat-label" style="font-weight: 600; margin-bottom: 15px; color: var(--text-color);">
                         Project-Based Learning</div>
                     <div class="stat-label" style="line-height: 1.5; font-size: 13px;">Recognized and awarded by the
                         college for exceptional performance in project-based learning.</div>
-                </div>
+                </a>
                 <div class="stat-card" style="display: flex; flex-direction: column; justify-content: center;">
                     <div class="stat-num" style="font-size: 22px;">Top 20</div>
                     <div class="stat-label" style="font-weight: 600; margin-bottom: 15px; color: var(--text-color);">
@@ -2184,13 +2390,14 @@
                     <div class="stat-label" style="line-height: 1.5; font-size: 13px;">Secured a Top 20 finish out of
                         700+ competing teams by building an innovative solution.</div>
                 </div>
-                <div class="stat-card" style="display: flex; flex-direction: column; justify-content: center;">
+                <a href="https://leetcode.com/u/Poorvikkg/" target="_blank" class="stat-card"
+                    style="display: flex; flex-direction: column; justify-content: center; text-decoration: none; cursor: pointer;">
                     <div class="stat-num" style="font-size: 22px;">LeetCode Guardian</div>
                     <div class="stat-label" style="font-weight: 600; margin-bottom: 15px; color: var(--text-color);">
                         Competitive Programming</div>
                     <div class="stat-label" style="line-height: 1.5; font-size: 13px;">Achieved the prestigious Guardian
                         badge on LeetCode, ranking in the top tier of competitive programmers globally.</div>
-                </div>
+                </a>
             </div>
         </section>
 
@@ -2364,7 +2571,39 @@
             </div>
         </section>
 
-        <!-- Section 07: Education -->
+        <!-- Section 07: Live Projects -->
+        <section id="live" data-num="O(n·2ⁿ)">
+            <div class="section-label">DEPLOYED & LIVE</div>
+            <h2 class="section-title">Live Projects</h2>
+
+            <div class="live-grid">
+                <a href="https://medicine-frontend-v462.onrender.com/" target="_blank" class="live-card">
+                    <div class="live-card-icon"><i class="fas fa-pills"></i></div>
+                    <h3 class="live-card-title">MediCare</h3>
+                    <div class="live-card-footer"><span class="live-dot"></span> Visit Live</div>
+                </a>
+
+                <a href="https://circuit-fixer.vercel.app/" target="_blank" class="live-card">
+                    <div class="live-card-icon"><i class="fas fa-project-diagram"></i></div>
+                    <h3 class="live-card-title">Fixy</h3>
+                    <div class="live-card-footer"><span class="live-dot"></span> Visit Live</div>
+                </a>
+
+                <a href="https://pblfinal-frontend.onrender.com/" target="_blank" class="live-card">
+                    <div class="live-card-icon"><i class="fas fa-tshirt"></i></div>
+                    <h3 class="live-card-title">Laundry System</h3>
+                    <div class="live-card-footer"><span class="live-dot"></span> Visit Live</div>
+                </a>
+
+                <a href="https://nucleussjec.in/" target="_blank" class="live-card">
+                    <div class="live-card-icon"><i class="fas fa-atom"></i></div>
+                    <h3 class="live-card-title">Nucleus SJEC</h3>
+                    <div class="live-card-footer"><span class="live-dot"></span> Visit Live</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Section 08: Education -->
         <section id="education" data-num="O(n!)">
             <div class="section-label">ACADEMIC BACKGROUND</div>
             <h2 class="section-title">Education</h2>
@@ -2718,7 +2957,7 @@
                     currentNumEl.textContent = num;
 
                     // Update scroll dot position based on section index
-                    const allSectionIds = ['hero', 'about', 'dsa', 'dev', 'leadership', 'projects', 'education', 'contact'];
+                    const allSectionIds = ['hero', 'about', 'dsa', 'dev', 'leadership', 'projects', 'live', 'education', 'contact'];
                     const index = allSectionIds.indexOf(entry.target.id);
                     const maxIndex = allSectionIds.length - 1;
                     const percentage = (index / maxIndex) * 100;
@@ -2881,8 +3120,8 @@
         let cmdHistoryIndex = -1;
 
         const availableCommands = [
-            'help', 'about', 'skills', 'experience', 'projects', 'education',
-            'contact', 'neofetch', 'clear', 'resume', 'exit'
+            'help', 'about', 'skills', 'experience', 'projects', 'live',
+            'education', 'contact', 'neofetch', 'clear', 'resume', 'exit'
         ];
 
         function toggleTerminalPanel() {
@@ -3018,6 +3257,7 @@
   <span class="terminal-output-success">skills</span>     - Technical skill stack
   <span class="terminal-output-success">experience</span> - Work experience
   <span class="terminal-output-success">projects</span>   - Core software & AI projects
+  <span class="terminal-output-success">live</span>       - Live deployed projects
   <span class="terminal-output-success">education</span>  - Academic background
   <span class="terminal-output-success">contact</span>    - Contact details & links
   <span class="terminal-output-success">neofetch</span>   - System information
@@ -3058,6 +3298,14 @@
    
 <span class="terminal-output-accent">4. Hostel Laundry Management (Web Project)</span>
    - Full stack administrative tracking system.`;
+
+                case 'live':
+                    return `<span class="terminal-output-accent">Live Deployed Projects:</span>
+
+  <span class="terminal-output-success">●</span> MediCare        → <a href="https://medicine-frontend-v462.onrender.com/" target="_blank" style="color: var(--text-color);">medicine-frontend-v462.onrender.com</a>
+  <span class="terminal-output-success">●</span> Fixy            → <a href="https://circuit-fixer.vercel.app/" target="_blank" style="color: var(--text-color);">circuit-fixer.vercel.app</a>
+  <span class="terminal-output-success">●</span> Laundry System  → <a href="https://pblfinal-frontend.onrender.com/" target="_blank" style="color: var(--text-color);">pblfinal-frontend.onrender.com</a>
+  <span class="terminal-output-success">●</span> Nucleus SJEC    → <a href="https://nucleussjec.in/" target="_blank" style="color: var(--text-color);">nucleussjec.in</a>`;
 
                 case 'education':
                     return `<span class="terminal-output-accent">St Joseph Engineering College, Mangalore</span>
