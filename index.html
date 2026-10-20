@@ -40,11 +40,44 @@
     </noscript>
     <style>
         :root {
+            /* Dark Mode (Default) */
             --bg-color: #181818;
+            --bg-card: rgba(255, 255, 255, 0.02);
+            --bg-card-hover: rgba(255, 255, 255, 0.06);
             --text-color: #f0f0f0;
             --text-gray: #999999;
+            --text-muted: rgba(255, 255, 255, 0.5);
             --border-color: #3a3a3a;
+            --border-subtle: rgba(255, 255, 255, 0.12);
             --accent-glow: rgba(255, 255, 255, 0.12);
+            --input-bg: #080808;
+            --dropdown-bg: #0d0d0d;
+            --hero-blend: lighten;
+            --hero-filter: contrast(1.05) brightness(0.95);
+            --scanline-opacity: 1;
+            --tab-active-bg: #ffffff;
+            --tab-active-color: #000000;
+        }
+
+        body[data-theme="light"] {
+            /* Light / Pure White Mode */
+            --bg-color: #ffffff;
+            --bg-card: #f8f9fa;
+            --bg-card-hover: #f1f3f5;
+            --text-color: #111827;
+            --text-gray: #4b5563;
+            --text-muted: #6b7280;
+            --border-color: #e5e7eb;
+            --border-subtle: #d1d5db;
+            --accent-glow: rgba(0, 0, 0, 0.06);
+            --input-bg: #f9fafb;
+            --dropdown-bg: #ffffff;
+            --hero-blend: multiply;
+            --hero-filter: contrast(1.08) brightness(1.02);
+            --scanline-opacity: 0.05;
+            --tab-active-bg: #111827;
+            --tab-active-color: #ffffff;
+            text-shadow: none !important;
         }
 
         * {
@@ -60,6 +93,7 @@
             overflow-x: hidden;
             scroll-behavior: smooth;
             text-shadow: 0 0 2px rgba(255, 255, 255, 0.4);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         /* CRT Scanline Overlay */
@@ -75,6 +109,8 @@
             z-index: 9999;
             background-size: 100% 3px, 3px 100%;
             pointer-events: none;
+            opacity: var(--scanline-opacity);
+            transition: opacity 0.3s ease;
         }
 
         /* Sharp Retro Elements */
@@ -335,7 +371,12 @@
             letter-spacing: -1px;
         }
 
-
+        body[data-theme="light"] .professional-title {
+            background: linear-gradient(to right, #0f172a, #475569);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: none;
+        }
 
         .hero-desc {
             color: var(--text-gray);
@@ -352,9 +393,9 @@
         }
 
         .btn-outline {
-            border: 1px solid var(--text-gray);
+            border: 1px solid var(--border-color);
             color: var(--text-color);
-            background: transparent;
+            background: var(--bg-card);
             padding: 15px 30px;
             font-size: 14px;
             text-decoration: none;
@@ -366,8 +407,8 @@
 
         .btn-outline:hover {
             border-color: var(--text-color);
-            background: rgba(255, 255, 255, 0.05);
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            background: var(--bg-card-hover);
+            box-shadow: 0 0 15px var(--accent-glow);
         }
 
         .btn-link {
@@ -392,21 +433,14 @@
             background-color: var(--text-color);
         }
 
-        .hero-buttons {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-        }
-
         .contact-dropdown {
             position: absolute;
             top: 100%;
             left: 0;
-            background: #050505;
-            /* Solid background to prevent overlap transparency */
+            background: var(--dropdown-bg);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 10px;
             display: flex;
@@ -414,12 +448,12 @@
             gap: 5px;
             min-width: 180px;
             z-index: 1000;
-            /* Higher z-index to stay above sections */
             opacity: 0;
             visibility: hidden;
             transform: translateY(10px);
             transition: all 0.3s ease;
             margin-top: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
         /* Robust invisible bridge to fix hover gap issue */
@@ -427,11 +461,9 @@
             content: '';
             position: absolute;
             top: -25px;
-            /* Deep overlap with the trigger */
             left: -20px;
             right: -20px;
             height: 40px;
-            /* Covers the entire gap plus extra buffer */
             background: transparent;
             z-index: -1;
         }
@@ -440,7 +472,6 @@
             position: relative;
             display: inline-block;
             z-index: 1001;
-            /* Ensure trigger and its children stay on top */
         }
 
         .contact-dropdown-wrap.active .contact-dropdown {
@@ -470,7 +501,7 @@
         }
 
         .contact-dropdown a:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--bg-card-hover);
         }
 
         .hero-image {
@@ -490,7 +521,6 @@
 
         .glow-ring {
             display: none;
-            /* Hide since the user's photo already has one */
         }
 
         .profile-img {
@@ -498,13 +528,12 @@
             height: 100%;
             object-fit: cover;
             object-position: center;
-            /* Smoothly fade out the edges of the photo into the black background */
             mask-image: radial-gradient(ellipse at 50% 50%, black 40%, transparent 75%);
             -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 40%, transparent 75%);
             opacity: 0.95;
-            filter: contrast(1.05) brightness(0.95);
-            mix-blend-mode: lighten;
-            /* This seamlessly blends any baked-in black background into the new gray theme! */
+            filter: var(--hero-filter);
+            mix-blend-mode: var(--hero-blend);
+            transition: filter 0.3s ease;
         }
 
         /* Scroll indicator */
@@ -694,8 +723,8 @@
 
         .tab-btn {
             background: transparent;
-            color: rgba(255, 255, 255, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-gray);
+            border: 1px solid var(--border-color);
             padding: 10px 24px;
             border-radius: 40px;
             font-size: 14px;
@@ -705,15 +734,15 @@
         }
 
         .tab-btn:hover {
-            color: #fff;
-            border-color: rgba(255, 255, 255, 0.5);
+            color: var(--text-color);
+            border-color: var(--text-color);
         }
 
         .tab-btn.active {
-            background: #fff;
-            color: #000;
-            border-color: #fff;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            background: var(--tab-active-bg);
+            color: var(--tab-active-color);
+            border-color: var(--tab-active-bg);
+            box-shadow: 0 0 20px var(--accent-glow);
         }
 
         .tab-content {
@@ -748,8 +777,8 @@
             border: 1px solid var(--border-color);
             border-radius: 10px;
             padding: 40px 30px;
-            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.02), transparent);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            background: var(--bg-card);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
             position: relative;
             overflow: hidden;
             display: flex;
@@ -758,8 +787,9 @@
 
         .project-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.2);
+            background: var(--bg-card-hover);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 20px var(--accent-glow);
+            border-color: var(--text-color);
         }
 
         .project-number {
@@ -773,7 +803,7 @@
         }
 
         .project-card:hover .project-number {
-            color: rgba(255, 255, 255, 0.5);
+            color: var(--text-gray);
         }
 
         .project-icon {
@@ -793,13 +823,14 @@
         .project-card:hover .project-icon {
             border-color: var(--text-color);
             color: var(--text-color);
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 15px var(--accent-glow);
         }
 
         .project-title {
             font-size: 22px;
             font-weight: 600;
             margin-bottom: 15px;
+            color: var(--text-color);
         }
 
         .project-desc {
@@ -823,7 +854,7 @@
             position: relative;
             padding-left: 15px;
             font-size: 13px;
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--text-muted);
             line-height: 1.5;
         }
 
@@ -831,7 +862,7 @@
             content: '▹';
             position: absolute;
             left: 0;
-            color: rgba(255, 255, 255, 0.4);
+            color: var(--text-gray);
         }
 
         .tech-stack {
@@ -847,7 +878,7 @@
             border: 1px solid var(--border-color);
             padding: 4px 12px;
             border-radius: 20px;
-            background: rgba(255, 255, 255, 0.03);
+            background: var(--bg-card);
         }
 
         .stat-card {
@@ -858,20 +889,20 @@
             flex: 1;
             min-width: 150px;
             text-align: center;
-            background: rgba(255, 255, 255, 0.02);
+            background: var(--bg-card);
             transition: all 0.3s ease;
         }
 
         .stat-card:hover {
-            background: var(--text-color);
-            border-color: var(--text-color);
+            background: var(--tab-active-bg);
+            border-color: var(--tab-active-bg);
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px var(--accent-glow);
         }
 
         .stat-card:hover .stat-num,
         .stat-card:hover .stat-label {
-            color: var(--bg-color) !important;
+            color: var(--tab-active-color) !important;
         }
 
         .stat-num {
@@ -939,7 +970,7 @@
         .skills-category-title {
             font-size: 11px;
             letter-spacing: 3px;
-            color: rgba(255, 255, 255, 0.4);
+            color: var(--text-gray);
             text-transform: uppercase;
         }
 
@@ -953,32 +984,32 @@
             display: inline-flex;
             align-items: center;
             padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
             border-radius: 40px;
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--text-color);
             font-size: 14px;
             font-weight: 500;
             transition: all 0.3s ease;
         }
 
         .skill-pill:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.3);
-            color: #fff;
+            background: var(--bg-card-hover);
+            border-color: var(--text-color);
+            color: var(--text-color);
             transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 15px var(--accent-glow);
         }
 
         .skill-pill.highlight {
-            border-color: rgba(255, 255, 255, 0.4);
-            color: #fff;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            border-color: var(--text-color);
+            color: var(--text-color);
+            box-shadow: 0 0 15px var(--accent-glow);
         }
 
         .skill-pill.highlight:hover {
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 25px var(--accent-glow);
+            background: var(--bg-card-hover);
         }
 
         .education-grid {
@@ -2062,6 +2093,110 @@
                 gap: 12px;
             }
         }
+
+        /* ============================================================
+           DARK / LIGHT THEME TOGGLE BUTTON
+           ============================================================ */
+        .theme-toggle-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            padding: 8px 14px;
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-family: 'Space Mono', monospace;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            user-select: none;
+            margin-left: 20px;
+            z-index: 102;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .theme-toggle-btn:hover {
+            border-color: var(--text-color);
+            background: var(--bg-card-hover);
+            box-shadow: 0 0 15px var(--accent-glow);
+            transform: translateY(-1px);
+        }
+
+        .theme-toggle-icon {
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .theme-toggle-btn:hover .theme-toggle-icon {
+            transform: rotate(20deg);
+        }
+
+        /* Light Theme Dynamic Refinements */
+        body[data-theme="light"] {
+            text-shadow: none !important;
+        }
+
+        body[data-theme="light"] .terminal-panel {
+            background: #0d0d0d !important;
+            border-left-color: rgba(255, 255, 255, 0.2) !important;
+        }
+
+        body[data-theme="light"] .contact-dropdown {
+            background: #ffffff;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12), 0 0 20px rgba(0, 0, 0, 0.04);
+        }
+
+        body[data-theme="light"] #contact-form input,
+        body[data-theme="light"] #contact-form textarea {
+            background: #f8fafc !important;
+            color: #0f172a !important;
+            border-color: #e2e8f0 !important;
+        }
+
+        body[data-theme="light"] #contact-form input:focus,
+        body[data-theme="light"] #contact-form textarea:focus {
+            border-color: #0f172a !important;
+        }
+
+        body[data-theme="light"] .float-tag {
+            background: rgba(0, 0, 0, 0.04);
+            border-color: rgba(0, 0, 0, 0.12);
+            color: #475569;
+        }
+
+        body[data-theme="light"] .cta-heading {
+            color: #0f172a !important;
+            text-shadow: none !important;
+        }
+
+        body[data-theme="light"] .cta-subtext {
+            color: #64748b !important;
+        }
+
+        body[data-theme="light"] .cta-btn-primary {
+            background: #0f172a;
+            color: #ffffff;
+            border-color: #0f172a;
+        }
+
+        body[data-theme="light"] .cta-btn-primary:hover {
+            background: transparent;
+            color: #0f172a;
+        }
+
+        @media (max-width: 768px) {
+            .theme-toggle-btn {
+                margin-left: 10px;
+                padding: 7px 10px;
+                font-size: 10px;
+            }
+        }
     </style>
 </head>
 
@@ -2105,6 +2240,12 @@
             <a href="#education">Education</a>
             <a href="#contact">Contact</a>
         </div>
+
+        <!-- Dark / Light Mode Toggle Button -->
+        <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" title="Toggle Dark and Light Mode" aria-label="Toggle Theme">
+            <span class="theme-toggle-icon" id="themeToggleIcon"><i class="fas fa-moon"></i></span>
+            <span class="theme-toggle-text" id="themeToggleText">DARK</span>
+        </button>
     </nav>
 
     <!-- Left Sidebar -->
@@ -2224,16 +2365,16 @@
             </h2>
             <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 20px;">
                 <a href="https://leetcode.com/u/Poorvikkg/" target="_blank" class="stat-card">
-                    <div class="stat-num" data-target="2500" data-suffix="+">3000+</div>
+                    <div class="stat-num" data-target="3000" data-suffix="+">3000+</div>
                     <div class="stat-label">Total Problems Solved</div>
                 </a>
                 <a href="https://leetcode.com/u/Poorvikkg/" target="_blank" class="stat-card">
-                    <div class="stat-num" data-target="1780" data-suffix="+">1780+</div>
+                    <div class="stat-num" data-target="2029" data-suffix="+">2029+</div>
                     <div class="stat-label">LeetCode Solved</div>
                 </a>
                 <a href="https://www.geeksforgeeks.org/profile/poorvikkg?tab=overview" target="_blank"
                     class="stat-card">
-                    <div class="stat-num" data-target="490" data-suffix="+">490+</div>
+                    <div class="stat-num" data-target="520" data-suffix="+">520+</div>
                     <div class="stat-label">GFG Solved</div>
                 </a>
                 <a href="https://www.geeksforgeeks.org/profile/poorvikkg?tab=overview" target="_blank"
@@ -3056,7 +3197,8 @@
                 }
             }
             draw() {
-                ctx.fillStyle = `rgba(180, 180, 180, ${this.opacity})`;
+                const isLight = document.body.getAttribute('data-theme') === 'light';
+                ctx.fillStyle = isLight ? `rgba(30, 41, 59, ${this.opacity * 0.85})` : `rgba(180, 180, 180, ${this.opacity})`;
                 ctx.font = `${this.size}px monospace`;
                 ctx.fillText(this.char, this.x, this.y);
             }
@@ -3158,7 +3300,7 @@
 
         const availableCommands = [
             'help', 'about', 'skills', 'experience', 'projects', 'live',
-            'education', 'contact', 'neofetch', 'clear', 'resume', 'exit'
+            'education', 'contact', 'color', 'theme', 'neofetch', 'clear', 'resume', 'exit'
         ];
 
         function toggleTerminalPanel() {
@@ -3297,10 +3439,35 @@
   <span class="terminal-output-success">live</span>       - Live deployed projects
   <span class="terminal-output-success">education</span>  - Academic background
   <span class="terminal-output-success">contact</span>    - Contact details & links
+  <span class="terminal-output-success">theme</span>      - Switch Dark/Light theme (e.g. 'theme light', 'theme dark')
   <span class="terminal-output-success">neofetch</span>   - System information
   <span class="terminal-output-success">clear</span>      - Clear screen
   <span class="terminal-output-success">resume</span>     - Download PDF Resume
   <span class="terminal-output-success">exit</span>       - Close terminal panel`;
+
+                case 'theme':
+                case 'color':
+                case 'mode': {
+                    const arg = parts[1];
+                    if (!arg) {
+                        const current = document.body.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+                        return `Current theme: <span class="terminal-output-accent">${current.toUpperCase()}</span>. Type <span class="terminal-output-success">theme toggle</span>, <span class="terminal-output-success">theme light</span>, or <span class="terminal-output-success">theme dark</span>.`;
+                    }
+                    if (arg === 'light' || arg === 'white') {
+                        setTheme('light', true);
+                        return `<span class="terminal-output-success">✔ Switched to Light (Pure White) theme.</span>`;
+                    }
+                    if (arg === 'dark' || arg === 'black' || arg === 'reset') {
+                        setTheme('dark', true);
+                        return `<span class="terminal-output-success">✔ Switched to Dark (Charcoal/Black) theme.</span>`;
+                    }
+                    if (arg === 'toggle') {
+                        toggleTheme();
+                        const next = document.body.getAttribute('data-theme') === 'light' ? 'LIGHT' : 'DARK';
+                        return `<span class="terminal-output-success">✔ Switched to ${next} theme.</span>`;
+                    }
+                    return `<span class="terminal-output-error">Usage: theme [dark|light|toggle]</span>`;
+                }
 
                 case 'about':
                     return `I'm an AIML undergraduate student with a passion for software engineering, building scalable backends, training intelligent models, and solving complex algorithmic challenges. I value discipline, consistency, and clarity in code.`;
@@ -3402,8 +3569,6 @@ LeetCode: <a href="https://leetcode.com/u/Poorvikkg/" target="_blank" style="col
 `;
                 }
 
-
-
                 case 'clear':
                     terminalHistory.innerHTML = '';
                     return '';
@@ -3420,6 +3585,49 @@ LeetCode: <a href="https://leetcode.com/u/Poorvikkg/" target="_blank" style="col
                     return `<span class="terminal-output-error">Command not found: ${escapeHtml(baseCmd)}. Type 'help' for a list of commands.</span>`;
             }
         }
+
+        // ============================================================
+        //  DARK / LIGHT THEME CONTROLLER
+        // ============================================================
+        function setTheme(theme, save = true) {
+            const isLight = theme === 'light';
+            const body = document.body;
+            const toggleIcon = document.getElementById('themeToggleIcon');
+            const toggleText = document.getElementById('themeToggleText');
+
+            if (isLight) {
+                body.setAttribute('data-theme', 'light');
+                if (toggleIcon) toggleIcon.innerHTML = '<i class="fas fa-sun" style="color: #f59e0b;"></i>';
+                if (toggleText) toggleText.textContent = 'LIGHT';
+            } else {
+                body.removeAttribute('data-theme');
+                if (toggleIcon) toggleIcon.innerHTML = '<i class="fas fa-moon"></i>';
+                if (toggleText) toggleText.textContent = 'DARK';
+            }
+
+            if (save) {
+                try {
+                    localStorage.setItem('portfolio_theme', isLight ? 'light' : 'dark');
+                } catch (e) { }
+            }
+        }
+
+        function toggleTheme() {
+            const current = document.body.getAttribute('data-theme');
+            setTheme(current === 'light' ? 'dark' : 'light', true);
+        }
+
+        // Initialize Theme from localStorage or default
+        (function initTheme() {
+            try {
+                const saved = localStorage.getItem('portfolio_theme');
+                if (saved === 'light') {
+                    setTheme('light', false);
+                } else {
+                    setTheme('dark', false);
+                }
+            } catch (e) { }
+        })();
 
         // Google Sheets Script Web App URL - Replace this with your own URL after deploying the Apps Script
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwY28G8sShCLRd6zlfQX4OdGyzS4wtsWEO_7krZoqm5J7G6twwfkFNdbbod9xd_VUnwNQ/exec';
